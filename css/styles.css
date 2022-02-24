@@ -1,0 +1,72 @@
+
+body {
+  text-align: center;
+  background-color: black;
+}
+
+#heading {
+  padding: 1% 0 3%;
+  color: white;
+}
+
+#guess-board {
+  width: 23%;
+  padding-bottom: 2%;
+}
+
+.col {
+  border: 2px solid #4A403A;
+  width: 35px;
+  height: 60px;
+  margin: 2px;
+  font-size: 2.2rem;
+  color: white;
+}
+
+#keyboard {
+  text-align: center;
+  width: 40%;
+  padding-top: 3%
+}
+
+.btn {
+  width: 45px;
+  height: 55px;
+  font-size: 1rem;
+  background: grey;
+  color: white;
+  margin: 3px;
+  padding-top: 13px;
+}
+
+.enter {
+  font-size: 0.8rem;
+  width: 70px;
+  padding-top: 17px;
+}
+
+.del {
+  font-size: 0.8rem;
+  width: 70px;
+  padding-top: 17px;
+}
+
+.green {
+  background-color: green;
+  border-color: green;
+}
+
+.yellow {
+  background-color: #F1D00A;
+  border-color: #F1D00A;
+}
+
+.black {
+  background-color: #4A403A;
+  border-color: #4A403A;
+}
+
+.pressed {
+  box-shadow: 0 20px 20px 0 #4A403A;
+  opacity: 0.5;
+}
