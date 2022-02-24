@@ -4,6 +4,7 @@ var chosenWord = wordsList[Math.floor(Math.random() * wordsList.length)];
 var chosenLetters = [chosenWord[0], chosenWord[1], chosenWord[2], chosenWord[3], chosenWord[4]];
 var userGuess = [];
 var gameRound = 1;
+var gameOn = true;
 
 console.log(chosenWord);
 console.log(chosenLetters);
@@ -11,13 +12,17 @@ console.log(chosenLetters);
 // Function to add each letter to guess row as user clicks
 $(".letter-key").click(function() {
 
-  var letterEntered = $(this).text();
+  if (gameOn) {
 
-  var guessSquare = "#row-" + gameRound + " .letter-" + (userGuess.length + 1);
-  $(guessSquare).text(letterEntered);
-  userGuess.push(letterEntered);
+    var letterEntered = $(this).text();
 
-  animateLetter(guessSquare);
+    var guessSquare = "#row-" + gameRound + " .letter-" + (userGuess.length + 1);
+    $(guessSquare).text(letterEntered);
+    userGuess.push(letterEntered);
+
+    animateLetter(guessSquare);
+
+  }
 
 });
 
@@ -36,7 +41,17 @@ $(".enter").click(function() {
   if (userGuess.length === 5) {
     checkGuess(userGuess);
     gameRound++;
-    userGuess = [];
+    console.log(userGuess);
+    console.log(userGuess.join("") === chosenWord);
+
+    if (gameRound === 7 || userGuess.join("") === chosenWord) {
+      gameOn = false;
+    }
+
+    if (gameOn) {
+      userGuess = [];
+    }
+
   }
 
 });
@@ -76,4 +91,4 @@ function animateLetter(letter) {
     $(letter).removeClass("pressed");
   }, 100);
 
-}
+};
