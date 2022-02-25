@@ -38,20 +38,25 @@ $(".del").click(function() {
 $(".enter").click(function() {
 
   if (userGuess.length === 5) {
-    checkGuess(userGuess);
-    gameRound++;
 
-    if (gameRound === 7) {
-      gameOn = false;
-    } else if (userGuess.join("") === chosenWord) {
-      // Animate tiles to jump
-      gameOn = false;
+    if (wordsList.includes(userGuess.join(""))) {
+
+      checkGuess(userGuess);
+      gameRound++;
+
+      if (gameRound === 7) {
+        gameOn = false;
+      } else if (userGuess.join("") === chosenWord) {
+        // Animate tiles to jump
+        gameOn = false;
+      }
+
+      if (gameOn) {
+        userGuess = [];
+      }
+
     }
-
-    if (gameOn) {
-      userGuess = [];
-    }
-
+    
   }
 
 });
