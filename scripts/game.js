@@ -7,7 +7,6 @@ var gameRound = 1;
 var gameOn = true;
 
 console.log(chosenWord);
-console.log(chosenLetters);
 
 // Function to add each letter to guess row as user clicks
 $(".letter-key").click(function() {
@@ -20,7 +19,7 @@ $(".letter-key").click(function() {
     $(guessSquare).text(letterEntered);
     userGuess.push(letterEntered);
 
-    animateLetter(guessSquare);
+    animateLetterPressed(guessSquare);
 
   }
 
@@ -41,10 +40,11 @@ $(".enter").click(function() {
   if (userGuess.length === 5) {
     checkGuess(userGuess);
     gameRound++;
-    console.log(userGuess);
-    console.log(userGuess.join("") === chosenWord);
 
-    if (gameRound === 7 || userGuess.join("") === chosenWord) {
+    if (gameRound === 7) {
+      gameOn = false;
+    } else if (userGuess.join("") === chosenWord) {
+      // Animate tiles to jump
       gameOn = false;
     }
 
@@ -59,23 +59,54 @@ $(".enter").click(function() {
 // Function to check user guess against chosen wordsList
 function checkGuess(guess) {
 
+  var chosenLettersCopy = [...chosenLetters];
+
+  // Turn correct letters green
   for (var i = 0; i < 5; i++) {
 
     var guessSquare = "#row-" + gameRound + " .letter-" + (i + 1);
     var guessedLetter = userGuess[i];
     var keyPressed = "#" + guessedLetter;
 
-    if (guessedLetter === chosenLetters[i]) {
+    if (chosenLettersCopy.includes(guessedLetter) && guessedLetter === chosenLetters[i]) {
       $(guessSquare).addClass("green");
       $(keyPressed).addClass("green");
-    } else if (chosenLetters.includes(guessedLetter)) {
+      var letterIndex = chosenLettersCopy.indexOf(guessedLetter);
+      chosenLettersCopy.splice(letterIndex, 1);
+    }
+
+  }
+
+  // Turn correct letters in wrong place yellow
+  for (var i = 0; i < 5; i++) {
+
+    var guessSquare = "#row-" + gameRound + " .letter-" + (i + 1);
+    var guessedLetter = userGuess[i];
+    var keyPressed = "#" + guessedLetter;
+
+    if (chosenLettersCopy.includes(guessedLetter) && !$(guessSquare).hasClass("green")) {
       $(guessSquare).addClass("yellow");
       if (!$(keyPressed).hasClass("green")) {
         $(keyPressed).addClass("yellow");
       }
-    } else {
+      var letterIndex = chosenLettersCopy.indexOf(guessedLetter);
+      chosenLettersCopy.splice(letterIndex, 1);
+    }
+
+  }
+
+  // Turn incorrect letters black
+  for (var i = 0; i < 5; i++) {
+
+    var guessSquare = "#row-" + gameRound + " .letter-" + (i + 1);
+    var guessedLetter = userGuess[i];
+    var keyPressed = "#" + guessedLetter;
+
+    if (!chosenLettersCopy.includes(guessedLetter) && !$(guessSquare).hasClass("green") && !$(guessSquare).hasClass("yellow")) {
       $(guessSquare).addClass("black");
-      $(keyPressed).addClass("black");
+      if (!$(keyPressed).hasClass("green")) {
+        $(keyPressed).addClass("black");
+      }
     }
 
   }
@@ -83,7 +114,7 @@ function checkGuess(guess) {
 };
 
 // Animate letter entered
-function animateLetter(letter) {
+function animateLetterPressed(letter) {
 
   $(letter).addClass("pressed");
 
