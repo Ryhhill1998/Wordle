@@ -15,7 +15,7 @@ body {
   padding-top: 2%;
 }
 
-.guess-space {
+#card {
   border: 2px solid #4A403A;
   width: 60px;
   height: 60px;

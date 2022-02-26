@@ -15,8 +15,10 @@ $(".letter-key").click(function() {
 
     var letterEntered = $(this).text();
 
-    var guessSquare = "#row-" + gameRound + " .letter-" + (userGuess.length + 1);
-    $(guessSquare).text(letterEntered);
+    var guessSquare = $(".front-row-" + gameRound + "-letter-" + (userGuess.length + 1));
+    var answerSquare = $(".back-row-" + gameRound + "-letter-" + (userGuess.length + 1));
+    guessSquare.text(letterEntered);
+    answerSquare.text(letterEntered);
     userGuess.push(letterEntered);
 
     animateLetterPressed(guessSquare);
@@ -28,8 +30,8 @@ $(".letter-key").click(function() {
 // Function to utilise DEL key
 $(".del").click(function() {
 
-  var guessSquare = "#row-" + gameRound + " .letter-" + (userGuess.length);
-  $(guessSquare).text("");
+  var guessSquare = $(".row-" + gameRound + "-letter-" + (userGuess.length + 1));
+  guessSquare.text("");
   userGuess.pop();
 
 });
@@ -41,7 +43,7 @@ $(".enter").click(function() {
 
     if (wordsList.includes(userGuess.join(""))) {
 
-      checkGuess(userGuess);
+      flipLetters();
       gameRound++;
 
       if (gameRound === 7) {
@@ -56,26 +58,26 @@ $(".enter").click(function() {
       }
 
     }
-    
+
   }
 
 });
 
 // Function to check user guess against chosen wordsList
-function checkGuess(guess) {
+function checkGuess() {
 
   var chosenLettersCopy = [...chosenLetters];
 
   // Turn correct letters green
   for (var i = 0; i < 5; i++) {
 
-    var guessSquare = "#row-" + gameRound + " .letter-" + (i + 1);
+    var guessSquare = $(".back-row-" + gameRound + "-letter-" + (i + 1));
     var guessedLetter = userGuess[i];
-    var keyPressed = "#" + guessedLetter;
+    var keyPressed = $("#" + guessedLetter);
 
     if (chosenLettersCopy.includes(guessedLetter) && guessedLetter === chosenLetters[i]) {
-      $(guessSquare).addClass("green");
-      $(keyPressed).addClass("green");
+      guessSquare.addClass("green");
+      keyPressed.addClass("green");
       var letterIndex = chosenLettersCopy.indexOf(guessedLetter);
       chosenLettersCopy.splice(letterIndex, 1);
     }
@@ -85,14 +87,14 @@ function checkGuess(guess) {
   // Turn correct letters in wrong place yellow
   for (var i = 0; i < 5; i++) {
 
-    var guessSquare = "#row-" + gameRound + " .letter-" + (i + 1);
+    var guessSquare = $(".back-row-" + gameRound + "-letter-" + (i + 1));
     var guessedLetter = userGuess[i];
-    var keyPressed = "#" + guessedLetter;
+    var keyPressed = $("#" + guessedLetter);
 
-    if (chosenLettersCopy.includes(guessedLetter) && !$(guessSquare).hasClass("green")) {
-      $(guessSquare).addClass("yellow");
-      if (!$(keyPressed).hasClass("green")) {
-        $(keyPressed).addClass("yellow");
+    if (chosenLettersCopy.includes(guessedLetter) && !guessSquare.hasClass("green")) {
+      guessSquare.addClass("yellow");
+      if (!keyPressed.hasClass("green")) {
+        keyPressed.addClass("yellow");
       }
       var letterIndex = chosenLettersCopy.indexOf(guessedLetter);
       chosenLettersCopy.splice(letterIndex, 1);
@@ -103,14 +105,14 @@ function checkGuess(guess) {
   // Turn incorrect letters black
   for (var i = 0; i < 5; i++) {
 
-    var guessSquare = "#row-" + gameRound + " .letter-" + (i + 1);
+    var guessSquare = $(".back-row-" + gameRound + "-letter-" + (i + 1));
     var guessedLetter = userGuess[i];
-    var keyPressed = "#" + guessedLetter;
+    var keyPressed = $("#" + guessedLetter);
 
-    if (!chosenLettersCopy.includes(guessedLetter) && !$(guessSquare).hasClass("green") && !$(guessSquare).hasClass("yellow")) {
-      $(guessSquare).addClass("black");
-      if (!$(keyPressed).hasClass("green")) {
-        $(keyPressed).addClass("black");
+    if (!chosenLettersCopy.includes(guessedLetter) && !guessSquare.hasClass("green") && !guessSquare.hasClass("yellow")) {
+      guessSquare.addClass("black");
+      if (!keyPressed.hasClass("green")) {
+        keyPressed.addClass("black");
       }
     }
 
@@ -127,4 +129,32 @@ function animateLetterPressed(letter) {
     $(letter).removeClass("pressed");
   }, 100);
 
+};
+
+// Set up flip cards animation
+function setAllCards() {
+
+  for (var j = 1; j < 7; j++) {
+    for (var i = 1; i < 6; i++) {
+      var card = $("#card.row-" + j + "-letter-" + i);
+      card.flip({
+        axis: "x",
+        trigger: "manual",
+        speed: 650,
+        front: ".front-row-" + j + "-letter-" + i,
+        back: ".back-row-" + j + "-letter-" + i,
+      });
+    }
+  }
+
+}
+
+setAllCards();
+
+function flipLetters() {
+  for (var i = 1; i < 6; i++) {
+    var card = $("#card.row-" + gameRound + "-letter-" + i);
+    card.flip(true);
+    checkGuess();
+  }
 };
