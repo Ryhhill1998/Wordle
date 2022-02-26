@@ -92,15 +92,14 @@ body {
 @media (max-width: 576px) {
   .btn {
     width: 40px;
-    height: 45px;
     font-size: 0.8rem;
   }
   .enter {
-    width: 50px;
+    width: 40px;
     font-size: 0.8rem;
   }
   .del {
-    width: 50px;
+    width: 40px;
     font-size: 0.8rem;
   }
 }
