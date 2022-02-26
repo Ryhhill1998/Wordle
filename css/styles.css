@@ -7,6 +7,7 @@ body {
 #heading {
   padding: 1%;
   color: white;
+  font-family: 'Graduate', cursive;
 }
 
 #feedback {
@@ -31,6 +32,7 @@ body {
 
 #card {
   border: 2px solid #4A403A;
+  font-family: 'Graduate', cursive;
   width: 60px;
   height: 60px;
   margin: 3px;
@@ -64,13 +66,13 @@ body {
 }
 
 .green {
-  background-color: green;
-  border-color: green;
+  background-color: #4E9F3D;
+  border-color: #4E9F3D;
 }
 
 .yellow {
-  background-color: #F1D00A;
-  border-color: #F1D00A;
+  background-color: #FDB827;
+  border-color: #FDB827;
 }
 
 .black {
