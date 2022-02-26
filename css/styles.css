@@ -58,7 +58,7 @@ body {
 
 .enter {
   width: 70px;
-  padding-right: 60px;
+  padding-right: 65px;
 }
 
 .del {
@@ -95,11 +95,11 @@ body {
     font-size: 0.8rem;
   }
   .enter {
-    width: 40px;
+    width: 50px;
     font-size: 0.8rem;
   }
   .del {
-    width: 40px;
+    width: 50px;
     font-size: 0.8rem;
   }
 }
