@@ -57,12 +57,11 @@ body {
 }
 
 .enter {
-  width: 70px;
-  padding-right: 65px;
+  width: auto;
 }
 
 .del {
-  width: 70px;
+  width: 75px;
 }
 
 .green {
@@ -95,11 +94,11 @@ body {
     font-size: 0.8rem;
   }
   .enter {
-    width: 50px;
+    width: auto;
     font-size: 0.8rem;
   }
   .del {
-    width: 50px;
+    width: auto;
     font-size: 0.8rem;
   }
 }
