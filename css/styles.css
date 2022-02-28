@@ -12,16 +12,14 @@ body {
 
 #feedback {
   display: none;
-  width: 12%;
-  height: 6%;
-  position: absolute;
-  top: 10%;
-  left: 44%;
+  color: black;
+  font-size: 1rem;
+  padding: 10px;
+  width: auto;
+  height: 8%;
   border: 2px solid white;
   border-radius: 5%;
-  padding: 10px;
   background-color: white;
-  z-index: 1;
 }
 
 #guess-board {
@@ -94,11 +92,11 @@ body {
     font-size: 0.8rem;
   }
   .enter {
-    width: auto;
+    width: 60px;
     font-size: 0.8rem;
   }
   .del {
-    width: auto;
+    width: 50px;
     font-size: 0.8rem;
   }
 }
