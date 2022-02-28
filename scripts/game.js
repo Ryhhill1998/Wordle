@@ -60,12 +60,12 @@ $(".enter").click(function() {
       if (gameRound === 7 && userGuess.join("") != chosenWord) {
         gameLost();
         $("#feedback").html("<strong>" + chosenWord + "</strong>");
-        $("#feedback").fadeIn(500)
+        $("#feedback").animate({opacity: 1});
         gameOn = false;
       } else if (userGuess.join("") === chosenWord) {
         // Animate tiles to jump
         $("#feedback").html("<strong>Nice one!</strong>");
-        $("#feedback").fadeIn(500)
+        $("#feedback").animate({opacity: 1});
         gameOn = false;
       }
       if (gameOn) {
@@ -74,12 +74,12 @@ $(".enter").click(function() {
 
     } else {
       $("#feedback").html("<strong>Not in word list</strong>");
-      $("#feedback").fadeIn(500).delay(1000).fadeOut(500);
+      $("#feedback").animate({opacity: 1}).delay(1000).animate({opacity: 0});
     }
 
   } else {
     $("#feedback").html("<strong>Not enough letters</strong>");
-    $("#feedback").fadeIn(500).delay(1000).fadeOut(500);
+    $("#feedback").animate({opacity: 1}).delay(1000).animate({opacity: 0});
   }
 
 });

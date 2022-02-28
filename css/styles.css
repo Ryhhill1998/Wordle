@@ -11,17 +11,15 @@ body {
 }
 
 #feedback {
-  display: none;
-  width: 12%;
-  height: 6%;
-  position: absolute;
-  top: 10%;
-  left: 44%;
+  opacity: 0;
+  color: black;
+  font-size: 1rem;
+  padding: 10px;
+  width: auto;
+  height: 8%;
   border: 2px solid white;
   border-radius: 5%;
-  padding: 10px;
   background-color: white;
-  z-index: 1;
 }
 
 #guess-board {
@@ -41,28 +39,26 @@ body {
 }
 
 #keyboard {
-  text-align: center;
   width: 100%;
-  padding: 3% 5%;
 }
 
-.btn {
+.key {
   width: 45px;
   height: 55px;
   font-size: 1rem;
   background: grey;
   color: white;
   margin: 3px;
-  padding-top: 14px;
+  border-radius: 5%;
+  padding: 14px 10px 10px;
 }
 
 .enter {
   width: 70px;
-  padding-right: 60px;
 }
 
 .del {
-  width: 70px;
+  width: 60px;
 }
 
 .green {
