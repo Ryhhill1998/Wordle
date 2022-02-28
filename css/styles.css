@@ -29,13 +29,16 @@ body {
 }
 
 #card {
-  border: 2px solid #4A403A;
   font-family: 'Graduate', cursive;
   width: 60px;
   height: 60px;
   margin: 3px;
   font-size: 2.2rem;
   color: white;
+}
+
+.front {
+  border: 2px solid #4A403A;
 }
 
 #keyboard {
@@ -63,17 +66,17 @@ body {
 
 .green {
   background-color: #4E9F3D;
-  border-color: #4E9F3D;
+  border: 2px solid #4E9F3D;
 }
 
 .yellow {
   background-color: #FDB827;
-  border-color: #FDB827;
+  border: 2px solid #FDB827;
 }
 
 .black {
   background-color: #4A403A;
-  border-color: #4A403A;
+  border: 2px solid #4A403A;
 }
 
 .pressed {

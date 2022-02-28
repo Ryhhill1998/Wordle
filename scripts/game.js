@@ -55,6 +55,7 @@ $(".enter").click(function() {
   if (userGuess.length === 5) {
 
     if (wordsList.includes(userGuess.join(""))) {
+      checkGuess();
       flipLetters();
       gameRound++;
       if (gameRound === 7 && userGuess.join("") != chosenWord) {
@@ -176,11 +177,21 @@ function setAllCards() {
 setAllCards();
 
 function flipLetters() {
-  for (var i = 1; i < 6; i++) {
-    var card = $("#card.row-" + gameRound + "-letter-" + i);
-    card.flip(true);
-    checkGuess();
-  }
+  var i = gameRound;
+  var delay = 300;
+  $("#card.row-" + i + "-letter-1").flip(true);
+  setTimeout(function() {
+    $("#card.row-" + i + "-letter-2").flip(true);
+  }, delay);
+  setTimeout(function() {
+    $("#card.row-" + i + "-letter-3").flip(true);
+  }, delay*2);
+  setTimeout(function() {
+    $("#card.row-" + i + "-letter-4").flip(true);
+  }, delay*3);
+  setTimeout(function() {
+    $("#card.row-" + i + "-letter-5").flip(true);
+  }, delay*4);
 };
 
 // lost game function
