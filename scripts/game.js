@@ -65,6 +65,7 @@ $(".enter").click(function() {
         gameOn = false;
       } else if (userGuess.join("") === chosenWord) {
         // Animate tiles to jump
+        jumpTiles();
         $("#feedback").html("<strong>Nice one!</strong>");
         $("#feedback").animate({opacity: 1});
         gameOn = false;
@@ -76,11 +77,13 @@ $(".enter").click(function() {
     } else {
       $("#feedback").html("<strong>Not in word list</strong>");
       $("#feedback").animate({opacity: 1}).delay(1000).animate({opacity: 0});
+      $(".row-" + gameRound).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50);
     }
 
   } else {
     $("#feedback").html("<strong>Not enough letters</strong>");
     $("#feedback").animate({opacity: 1}).delay(1000).animate({opacity: 0});
+    $(".row-" + gameRound).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50);
   }
 
 });
@@ -202,3 +205,27 @@ function gameLost() {
   }
 
 }
+
+// Tile jump animation
+function jumpTiles() {
+
+  var i = gameRound - 1;
+  var start = 1200;
+  var delay = 100;
+  setTimeout(function() {
+    $("#card.row-" + i + "-letter-1").animate({top: -40}, 300).animate({top: 0}, 100);
+  }, start);
+  setTimeout(function() {
+    $("#card.row-" + i + "-letter-2").animate({top: -40}, 300).animate({top: 0}, 100);
+  }, start + delay);
+  setTimeout(function() {
+    $("#card.row-" + i + "-letter-3").animate({top: -40}, 300).animate({top: 0}, 100);
+  }, start + delay*2);
+  setTimeout(function() {
+    $("#card.row-" + i + "-letter-4").animate({top: -40}, 300).animate({top: 0}, 100);
+  }, start + delay*3);
+  setTimeout(function() {
+    $("#card.row-" + i + "-letter-5").animate({top: -40}, 300).animate({top: 0}, 100);
+  }, start + delay*4);
+
+};
