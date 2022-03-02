@@ -17,7 +17,7 @@ body {
   left: 0;
   right: 0;
   margin: 0 auto;
-  top: 16%;
+  top: 14%;
   width: 510px;
   height: 570px;
   border: 1px solid #4A403A;
@@ -169,5 +169,8 @@ body {
   .key-row-2 {
     width: 100%;
     padding: 0 5%;
+  }
+  #instructions {
+    width: auto;
   }
 }
