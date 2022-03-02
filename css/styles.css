@@ -171,6 +171,9 @@ body {
     padding: 0 5%;
   }
   #instructions {
-    width: auto;
+    width: 450px;
+  }
+  .close-window {
+    left: 38%;
   }
 }
