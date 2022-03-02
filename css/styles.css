@@ -170,10 +170,4 @@ body {
     width: 100%;
     padding: 0 5%;
   }
-  #instructions {
-    width: 450px;
-  }
-  .close-window {
-    left: 160px;
-  }
 }
