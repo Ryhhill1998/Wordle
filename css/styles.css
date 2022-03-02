@@ -30,7 +30,7 @@ body {
 
 .close-window {
   position: relative;
-  left: 220px;
+  left: 44%;
   background-color: black;
   border-color: black;
   padding: 0 6px;
@@ -172,5 +172,8 @@ body {
   }
   #instructions {
     width: 90%;
+  }
+  .close-window {
+    left: 40%;
   }
 }
