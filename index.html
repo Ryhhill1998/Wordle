@@ -14,358 +14,363 @@
 
 <body>
 
-<h1 id="heading">Wordle</h1>
+  <!-- <div id="instructions" class="container-fluid">
+    <br><p><strong>Guess the WORDLE in six attempts.</strong><button type="button" class="btn btn-dark close-window">X</button></p>
+    <p>Each guess must be a five-letter word in the word list. Hit the enter button to submit.</p>
+    <p>After each guess, the colour of the tiles will change to show how close your guess was to the chosen word.</p>
+    <hr>
+  </div> -->
 
-<div class="container-fluid">
-  <div class="d-flex flex-row justify-content-center">
-    <h2 id="feedback">Not enough letters</h2>
-  </div>
-</div>
+  <div id="guess-board" class="container-fluid">
 
-<div id="guess-board" class="container-fluid">
+    <h1 id="heading">Wordle</h1>
 
-  <div class="d-flex flex-row justify-content-center row-1">
-
-    <div id="card" class="row-1-letter-1">
-      <div class="front front-row-1-letter-1">
-        <strong></strong>
-      </div>
-      <div class="back-row-1-letter-1">
-        <strong></strong>
-      </div>
+    <div class="d-flex flex-row justify-content-center">
+      <h2 id="feedback">Not enough letters</h2>
     </div>
 
-    <div id="card" class="row-1-letter-2">
-      <div class="front front-row-1-letter-2">
-        <strong></strong>
+    <div class="d-flex flex-row justify-content-center row-1">
+
+      <div id="card" class="row-1-letter-1">
+        <div class="front front-row-1-letter-1">
+          <strong></strong>
+        </div>
+        <div class="back-row-1-letter-1">
+          <strong></strong>
+        </div>
       </div>
-      <div class="back-row-1-letter-2">
-        <strong></strong>
+
+      <div id="card" class="row-1-letter-2">
+        <div class="front front-row-1-letter-2">
+          <strong></strong>
+        </div>
+        <div class="back-row-1-letter-2">
+          <strong></strong>
+        </div>
       </div>
+
+      <div id="card" class="row-1-letter-3">
+        <div class="front front-row-1-letter-3">
+          <strong></strong>
+        </div>
+        <div class="back-row-1-letter-3">
+          <strong></strong>
+        </div>
+      </div>
+
+      <div id="card" class="row-1-letter-4">
+        <div class="front front-row-1-letter-4">
+          <strong></strong>
+        </div>
+        <div class="back-row-1-letter-4">
+          <strong></strong>
+        </div>
+      </div>
+
+      <div id="card" class="row-1-letter-5">
+        <div class="front front-row-1-letter-5">
+          <strong></strong>
+        </div>
+        <div class="back-row-1-letter-5">
+          <strong></strong>
+        </div>
+      </div>
+
     </div>
 
-    <div id="card" class="row-1-letter-3">
-      <div class="front front-row-1-letter-3">
-        <strong></strong>
+    <div class="d-flex flex-row justify-content-center row-2">
+
+      <div id="card" class="row-2-letter-1">
+        <div class="front front-row-2-letter-1">
+          <strong></strong>
+        </div>
+        <div class="back-row-2-letter-1">
+          <strong></strong>
+        </div>
       </div>
-      <div class="back-row-1-letter-3">
-        <strong></strong>
+
+      <div id="card" class="row-2-letter-2">
+        <div class="front front-row-2-letter-2">
+          <strong></strong>
+        </div>
+        <div class="back-row-2-letter-2">
+          <strong></strong>
+        </div>
       </div>
+
+      <div id="card" class="row-2-letter-3">
+        <div class="front front-row-2-letter-3">
+          <strong></strong>
+        </div>
+        <div class="back-row-2-letter-3">
+          <strong></strong>
+        </div>
+      </div>
+
+      <div id="card" class="row-2-letter-4">
+        <div class="front front-row-2-letter-4">
+          <strong></strong>
+        </div>
+        <div class="back-row-2-letter-4">
+          <strong></strong>
+        </div>
+      </div>
+
+      <div id="card" class="row-2-letter-5">
+        <div class="front front-row-2-letter-5">
+          <strong></strong>
+        </div>
+        <div class="back-row-2-letter-5">
+          <strong></strong>
+        </div>
+      </div>
+
     </div>
 
-    <div id="card" class="row-1-letter-4">
-      <div class="front front-row-1-letter-4">
-        <strong></strong>
+    <div class="d-flex flex-row justify-content-center row-3">
+
+      <div id="card" class="row-3-letter-1">
+        <div class="front front-row-3-letter-1">
+          <strong></strong>
+        </div>
+        <div class="back-row-3-letter-1">
+          <strong></strong>
+        </div>
       </div>
-      <div class="back-row-1-letter-4">
-        <strong></strong>
+
+      <div id="card" class="row-3-letter-2">
+        <div class="front front-row-3-letter-2">
+          <strong></strong>
+        </div>
+        <div class="back-row-3-letter-2">
+          <strong></strong>
+        </div>
       </div>
+
+      <div id="card" class="row-3-letter-3">
+        <div class="front front-row-3-letter-3">
+          <strong></strong>
+        </div>
+        <div class="back-row-3-letter-3">
+          <strong></strong>
+        </div>
+      </div>
+
+      <div id="card" class="row-3-letter-4">
+        <div class="front front-row-3-letter-4">
+          <strong></strong>
+        </div>
+        <div class="back-row-3-letter-4">
+          <strong></strong>
+        </div>
+      </div>
+
+      <div id="card" class="row-3-letter-5">
+        <div class="front front-row-3-letter-5">
+          <strong></strong>
+        </div>
+        <div class="back-row-3-letter-5">
+          <strong></strong>
+        </div>
+      </div>
+
     </div>
 
-    <div id="card" class="row-1-letter-5">
-      <div class="front front-row-1-letter-5">
-        <strong></strong>
+    <div class="d-flex flex-row justify-content-center row-4">
+
+      <div id="card" class="row-4-letter-1">
+        <div class="front front-row-4-letter-1">
+          <strong></strong>
+        </div>
+        <div class="back-row-4-letter-1">
+          <strong></strong>
+        </div>
       </div>
-      <div class="back-row-1-letter-5">
-        <strong></strong>
+
+      <div id="card" class="row-4-letter-2">
+        <div class="front front-row-4-letter-2">
+          <strong></strong>
+        </div>
+        <div class="back-row-4-letter-2">
+          <strong></strong>
+        </div>
       </div>
+
+      <div id="card" class="row-4-letter-3">
+        <div class="front front-row-4-letter-3">
+          <strong></strong>
+        </div>
+        <div class="back-row-4-letter-3">
+          <strong></strong>
+        </div>
+      </div>
+
+      <div id="card" class="row-4-letter-4">
+        <div class="front front-row-4-letter-4">
+          <strong></strong>
+        </div>
+        <div class="back-row-4-letter-4">
+          <strong></strong>
+        </div>
+      </div>
+
+      <div id="card" class="row-4-letter-5">
+        <div class="front front-row-4-letter-5">
+          <strong></strong>
+        </div>
+        <div class="back-row-4-letter-5">
+          <strong></strong>
+        </div>
+      </div>
+
     </div>
 
-  </div>
+    <div class="d-flex flex-row justify-content-center row-5">
 
-  <div class="d-flex flex-row justify-content-center row-2">
+      <div id="card" class="row-5-letter-1">
+        <div class="front front-row-5-letter-1">
+          <strong></strong>
+        </div>
+        <div class="back-row-5-letter-1">
+          <strong></strong>
+        </div>
+      </div>
 
-    <div id="card" class="row-2-letter-1">
-      <div class="front front-row-2-letter-1">
-        <strong></strong>
+      <div id="card" class="row-5-letter-2">
+        <div class="front front-row-5-letter-2">
+          <strong></strong>
+        </div>
+        <div class="back-row-5-letter-2">
+          <strong></strong>
+        </div>
       </div>
-      <div class="back-row-2-letter-1">
-        <strong></strong>
+
+      <div id="card" class="row-5-letter-3">
+        <div class="front front-row-5-letter-3">
+          <strong></strong>
+        </div>
+        <div class="back-row-5-letter-3">
+          <strong></strong>
+        </div>
       </div>
+
+      <div id="card" class="row-5-letter-4">
+        <div class="front front-row-5-letter-4">
+          <strong></strong>
+        </div>
+        <div class="back-row-5-letter-4">
+          <strong></strong>
+        </div>
+      </div>
+
+      <div id="card" class="row-5-letter-5">
+        <div class="front front-row-5-letter-5">
+          <strong></strong>
+        </div>
+        <div class="back-row-5-letter-5">
+          <strong></strong>
+        </div>
+      </div>
+
     </div>
 
-    <div id="card" class="row-2-letter-2">
-      <div class="front front-row-2-letter-2">
-        <strong></strong>
+    <div class="d-flex flex-row justify-content-center row-6">
+
+      <div id="card" class="row-6-letter-1">
+        <div class="front front-row-6-letter-1">
+          <strong></strong>
+        </div>
+        <div class="back-row-6-letter-1">
+          <strong></strong>
+        </div>
       </div>
-      <div class="back-row-2-letter-2">
-        <strong></strong>
+
+      <div id="card" class="row-6-letter-2">
+        <div class="front front-row-6-letter-2">
+          <strong></strong>
+        </div>
+        <div class="back-row-6-letter-2">
+          <strong></strong>
+        </div>
       </div>
+
+      <div id="card" class="row-6-letter-3">
+        <div class="front front-row-6-letter-3">
+          <strong></strong>
+        </div>
+        <div class="back-row-6-letter-3">
+          <strong></strong>
+        </div>
+      </div>
+
+      <div id="card" class="row-6-letter-4">
+        <div class="front front-row-6-letter-4">
+          <strong></strong>
+        </div>
+        <div class="back-row-6-letter-4">
+          <strong></strong>
+        </div>
+      </div>
+
+      <div id="card" class="row-6-letter-5">
+        <div class="front front-row-6-letter-5">
+          <strong></strong>
+        </div>
+        <div class="back-row-6-letter-5">
+          <strong></strong>
+        </div>
+      </div>
+
     </div>
 
-    <div id="card" class="row-2-letter-3">
-      <div class="front front-row-2-letter-3">
-        <strong></strong>
-      </div>
-      <div class="back-row-2-letter-3">
-        <strong></strong>
-      </div>
-    </div>
-
-    <div id="card" class="row-2-letter-4">
-      <div class="front front-row-2-letter-4">
-        <strong></strong>
-      </div>
-      <div class="back-row-2-letter-4">
-        <strong></strong>
-      </div>
-    </div>
-
-    <div id="card" class="row-2-letter-5">
-      <div class="front front-row-2-letter-5">
-        <strong></strong>
-      </div>
-      <div class="back-row-2-letter-5">
-        <strong></strong>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="d-flex flex-row justify-content-center row-3">
-
-    <div id="card" class="row-3-letter-1">
-      <div class="front front-row-3-letter-1">
-        <strong></strong>
-      </div>
-      <div class="back-row-3-letter-1">
-        <strong></strong>
-      </div>
-    </div>
-
-    <div id="card" class="row-3-letter-2">
-      <div class="front front-row-3-letter-2">
-        <strong></strong>
-      </div>
-      <div class="back-row-3-letter-2">
-        <strong></strong>
-      </div>
-    </div>
-
-    <div id="card" class="row-3-letter-3">
-      <div class="front front-row-3-letter-3">
-        <strong></strong>
-      </div>
-      <div class="back-row-3-letter-3">
-        <strong></strong>
-      </div>
-    </div>
-
-    <div id="card" class="row-3-letter-4">
-      <div class="front front-row-3-letter-4">
-        <strong></strong>
-      </div>
-      <div class="back-row-3-letter-4">
-        <strong></strong>
-      </div>
-    </div>
-
-    <div id="card" class="row-3-letter-5">
-      <div class="front front-row-3-letter-5">
-        <strong></strong>
-      </div>
-      <div class="back-row-3-letter-5">
-        <strong></strong>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="d-flex flex-row justify-content-center row-4">
-
-    <div id="card" class="row-4-letter-1">
-      <div class="front front-row-4-letter-1">
-        <strong></strong>
-      </div>
-      <div class="back-row-4-letter-1">
-        <strong></strong>
-      </div>
-    </div>
-
-    <div id="card" class="row-4-letter-2">
-      <div class="front front-row-4-letter-2">
-        <strong></strong>
-      </div>
-      <div class="back-row-4-letter-2">
-        <strong></strong>
-      </div>
-    </div>
-
-    <div id="card" class="row-4-letter-3">
-      <div class="front front-row-4-letter-3">
-        <strong></strong>
-      </div>
-      <div class="back-row-4-letter-3">
-        <strong></strong>
-      </div>
-    </div>
-
-    <div id="card" class="row-4-letter-4">
-      <div class="front front-row-4-letter-4">
-        <strong></strong>
-      </div>
-      <div class="back-row-4-letter-4">
-        <strong></strong>
-      </div>
-    </div>
-
-    <div id="card" class="row-4-letter-5">
-      <div class="front front-row-4-letter-5">
-        <strong></strong>
-      </div>
-      <div class="back-row-4-letter-5">
-        <strong></strong>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="d-flex flex-row justify-content-center row-5">
-
-    <div id="card" class="row-5-letter-1">
-      <div class="front front-row-5-letter-1">
-        <strong></strong>
-      </div>
-      <div class="back-row-5-letter-1">
-        <strong></strong>
-      </div>
-    </div>
-
-    <div id="card" class="row-5-letter-2">
-      <div class="front front-row-5-letter-2">
-        <strong></strong>
-      </div>
-      <div class="back-row-5-letter-2">
-        <strong></strong>
-      </div>
-    </div>
-
-    <div id="card" class="row-5-letter-3">
-      <div class="front front-row-5-letter-3">
-        <strong></strong>
-      </div>
-      <div class="back-row-5-letter-3">
-        <strong></strong>
-      </div>
-    </div>
-
-    <div id="card" class="row-5-letter-4">
-      <div class="front front-row-5-letter-4">
-        <strong></strong>
-      </div>
-      <div class="back-row-5-letter-4">
-        <strong></strong>
-      </div>
-    </div>
-
-    <div id="card" class="row-5-letter-5">
-      <div class="front front-row-5-letter-5">
-        <strong></strong>
-      </div>
-      <div class="back-row-5-letter-5">
-        <strong></strong>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="d-flex flex-row justify-content-center row-6">
-
-    <div id="card" class="row-6-letter-1">
-      <div class="front front-row-6-letter-1">
-        <strong></strong>
-      </div>
-      <div class="back-row-6-letter-1">
-        <strong></strong>
-      </div>
-    </div>
-
-    <div id="card" class="row-6-letter-2">
-      <div class="front front-row-6-letter-2">
-        <strong></strong>
-      </div>
-      <div class="back-row-6-letter-2">
-        <strong></strong>
-      </div>
-    </div>
-
-    <div id="card" class="row-6-letter-3">
-      <div class="front front-row-6-letter-3">
-        <strong></strong>
-      </div>
-      <div class="back-row-6-letter-3">
-        <strong></strong>
-      </div>
-    </div>
-
-    <div id="card" class="row-6-letter-4">
-      <div class="front front-row-6-letter-4">
-        <strong></strong>
-      </div>
-      <div class="back-row-6-letter-4">
-        <strong></strong>
-      </div>
-    </div>
-
-    <div id="card" class="row-6-letter-5">
-      <div class="front front-row-6-letter-5">
-        <strong></strong>
-      </div>
-      <div class="back-row-6-letter-5">
-        <strong></strong>
-      </div>
-    </div>
-
-  </div>
-
-</div>
-
-<div id="keyboard" class="container-fluid">
-
-  <div class="d-flex flex-row justify-content-center key-row-1">
-    <div id="Q" class="key letter-key"><strong>Q</strong></div>
-    <div id="W" class="key letter-key"><strong>W</strong></div>
-    <div id="E" class="key letter-key"><strong>E</strong></div>
-    <div id="R" class="key letter-key"><strong>R</strong></div>
-    <div id="T" class="key letter-key"><strong>T</strong></div>
-    <div id="Y" class="key letter-key"><strong>Y</strong></div>
-    <div id="U" class="key letter-key"><strong>U</strong></div>
-    <div id="I" class="key letter-key"><strong>I</strong></div>
-    <div id="O" class="key letter-key"><strong>O</strong></div>
-    <div id="P" class="key letter-key"><strong>P</strong></div>
   </div>
 
-  <div class="d-flex flex-row justify-content-center key-row-2">
-    <div id="A" class="key letter-key"><strong>A</strong></div>
-    <div id="S" class="key letter-key"><strong>S</strong></div>
-    <div id="D" class="key letter-key"><strong>D</strong></div>
-    <div id="F" class="key letter-key"><strong>F</strong></div>
-    <div id="G" class="key letter-key"><strong>G</strong></div>
-    <div id="H" class="key letter-key"><strong>H</strong></div>
-    <div id="J" class="key letter-key"><strong>J</strong></div>
-    <div id="K" class="key letter-key"><strong>K</strong></div>
-    <div id="L" class="key letter-key"><strong>L</strong></div>
+  <div id="keyboard" class="container-fluid">
+
+    <div class="d-flex flex-row justify-content-center key-row-1">
+      <button id="Q" class="btn key letter-key"><strong>Q</strong></button>
+      <button id="W" class="btn key letter-key"><strong>W</strong></button>
+      <button id="E" class="btn key letter-key"><strong>E</strong></button>
+      <button id="R" class="btn key letter-key"><strong>R</strong></button>
+      <button id="T" class="btn key letter-key"><strong>T</strong></button>
+      <button id="Y" class="btn key letter-key"><strong>Y</strong></button>
+      <button id="U" class="btn key letter-key"><strong>U</strong></button>
+      <button id="I" class="btn key letter-key"><strong>I</strong></button>
+      <button id="O" class="btn key letter-key"><strong>O</strong></button>
+      <button id="P" class="btn key letter-key"><strong>P</strong></button>
+    </div>
+
+    <div class="d-flex flex-row justify-content-center key-row-2">
+      <button id="A" class="btn key letter-key"><strong>A</strong></button>
+      <button id="S" class="btn key letter-key"><strong>S</strong></button>
+      <button id="D" class="btn key letter-key"><strong>D</strong></button>
+      <button id="F" class="btn key letter-key"><strong>F</strong></button>
+      <button id="G" class="btn key letter-key"><strong>G</strong></button>
+      <button id="H" class="btn key letter-key"><strong>H</strong></button>
+      <button id="J" class="btn key letter-key"><strong>J</strong></button>
+      <button id="K" class="btn key letter-key"><strong>K</strong></button>
+      <button id="L" class="btn key letter-key"><strong>L</strong></button>
+    </div>
+
+    <div class="d-flex flex-row justify-content-center key-row-3">
+      <button class="btn key enter"><strong>ENTER</strong></button>
+      <button id="Z" class="btn key letter-key"><strong>Z</strong></button>
+      <button id="X" class="btn key letter-key"><strong>X</strong></button>
+      <button id="C" class="btn key letter-key"><strong>C</strong></button>
+      <button id="V" class="btn key letter-key"><strong>V</strong></button>
+      <button id="B" class="btn key letter-key"><strong>B</strong></button>
+      <button id="N" class="btn key letter-key"><strong>N</strong></button>
+      <button id="M" class="btn key letter-key"><strong>M</strong></button>
+      <button class="btn key del"><strong>DEL</strong></button>
+    </div>
+
   </div>
 
-  <div class="d-flex flex-row justify-content-center key-row-3">
-    <div class="key enter"><strong><p>ENTER</p></strong></div>
-    <div id="Z" class="key letter-key"><strong>Z</strong></div>
-    <div id="X" class="key letter-key"><strong>X</strong></div>
-    <div id="C" class="key letter-key"><strong>C</strong></div>
-    <div id="V" class="key letter-key"><strong>V</strong></div>
-    <div id="B" class="key letter-key"><strong>B</strong></div>
-    <div id="N" class="key letter-key"><strong>N</strong></div>
-    <div id="M" class="key letter-key"><strong>M</strong></div>
-    <div class="key del"><strong><p>DEL</p></strong></div>
-  </div>
 
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
-<script src="scripts/game.js" charset="utf-8"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+  <script src="scripts/game.js" charset="utf-8"></script>
 </body>
 
 </html>

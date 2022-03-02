@@ -10,6 +10,28 @@ body {
   font-family: 'Graduate', cursive;
 }
 
+#instructions {
+  position: absolute;
+  z-index: 1;
+  left: 32.5%;
+  top: 18%;
+  width: 35%;
+  height: 63%;
+  border: 1px solid #4A403A;
+  border-radius: 1.5%;
+  background-color: black;
+  color: white;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.close-window {
+  position: relative;
+  left: 38%;
+  background-color: black;
+  border-color: black;
+}
+
 #feedback {
   opacity: 0;
   color: black;
@@ -58,15 +80,15 @@ body {
   color: white;
   margin: 3px;
   border-radius: 8%;
-  padding: 16px 10px 10px;
+  padding: 10px 10px 10px;
 }
 
 .enter {
-  width: 70px;
+  width: 67.5px;
 }
 
 .del {
-  width: 60px;
+  width: 67.5px;
 }
 
 .green {
@@ -107,6 +129,10 @@ body {
 
 .end-game {
   color: red;
+}
+
+.dim-background {
+  opacity: 0.5;
 }
 
 @media (max-width: 576px) {

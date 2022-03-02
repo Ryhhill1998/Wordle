@@ -13,9 +13,16 @@ var chosenWord = finalWordsList[Math.floor(Math.random() * finalWordsList.length
 var chosenLetters = chosenWord.split("");
 var userGuess = [];
 var gameRound = 1;
-var gameOn = true;
+var gameOn = false;
 
 console.log(chosenWord);
+
+// if (gameRound === 1 && !gameOn) {
+//   $("#heading").addClass("dim-background");
+//   $("#game-board").addClass("dim-background");
+//   $("#keyboard").addClass("dim-background");
+//   gameOn = true;
+// }
 
 // Function to add each letter to guess row as user clicks
 $(".letter-key").click(function() {
