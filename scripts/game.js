@@ -17,12 +17,20 @@ var gameOn = false;
 
 console.log(chosenWord);
 
-// if (gameRound === 1 && !gameOn) {
-//   $("#heading").addClass("dim-background");
-//   $("#game-board").addClass("dim-background");
-//   $("#keyboard").addClass("dim-background");
-//   gameOn = true;
-// }
+if (gameRound === 1 && !gameOn) {
+  $("#heading").addClass("dim-background");
+  $("#game-board").addClass("dim-background");
+  $("#keyboard").addClass("dim-background");
+
+  $(".close-window").click(function() {
+    $("#instructions").fadeOut(500);
+    $("#heading").animate({opacity: 1}, 500);
+    $("#game-board").animate({opacity: 1}, 500);
+    $("#keyboard").animate({opacity: 1}, 500);
+    gameOn = true;
+
+  });
+}
 
 // Function to add each letter to guess row as user clicks
 $(".letter-key").click(function() {
@@ -69,15 +77,18 @@ $(".enter").click(function() {
         gameRound++;
         if (gameRound === 7 && userGuess.join("") != chosenWord) {
           gameLost();
-          $("#feedback").html("<strong>" + chosenWord + "</strong>");
-          $("#feedback").animate({opacity: 1});
-          gameOn = false;
+          setTimeout(function() {
+            $("#feedback").html("<strong>" + chosenWord + "</strong>");
+            $("#feedback").animate({opacity: 1});
+          }, 1200)
         } else if (userGuess.join("") === chosenWord) {
           // Animate tiles to jump
           jumpTiles();
-          $("#feedback").html("<strong>Nice one!</strong>");
-          $("#feedback").animate({opacity: 1});
           gameOn = false;
+          setTimeout(function() {
+            $("#feedback").html("<strong>Nice one!</strong>");
+            $("#feedback").animate({opacity: 1});
+          }, 1200)
         }
         if (gameOn) {
           userGuess = [];
@@ -214,6 +225,8 @@ function gameLost() {
   for (var i = 1; i < 7; i++) {
     $(".back-row-6-letter-" + i).addClass("end-game");
   }
+
+  gameOn = false;
 
 }
 
