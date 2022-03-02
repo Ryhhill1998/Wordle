@@ -29,11 +29,10 @@ body {
 }
 
 .close-window {
-  position: relative;
-  left: 44%;
   background-color: black;
   border-color: black;
   padding: 0 6px;
+  float: right;
 }
 
 .example {
@@ -172,8 +171,5 @@ body {
   }
   #instructions {
     width: 90%;
-  }
-  .close-window {
-    left: 40%;
   }
 }
