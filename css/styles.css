@@ -4,10 +4,26 @@ body {
   background-color: black;
 }
 
+#navigator {
+  width: 80%;
+  border-bottom: solid 2px grey;
+}
+
 #heading {
-  padding: 1%;
+  padding: 10px 0;
+  font-size: 2rem;
   color: white;
   font-family: 'Graduate', cursive;
+}
+
+#home {
+  position: relative;
+  right: 150px;
+}
+
+#features {
+  position: relative;
+  left: 150px;
 }
 
 #instructions {
@@ -109,7 +125,7 @@ body {
   color: white;
   margin: 3px;
   border-radius: 8%;
-  padding: 15px 10px 10px;
+  padding: 17px 10px 10px;
 }
 
 .enter {
