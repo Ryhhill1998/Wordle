@@ -9,33 +9,42 @@ var chosenLetters = chosenWord.split("");
 // Set up remaining game variables
 var userGuess = [];
 var gameRound = 1;
-var gameOn = false;
+var gameOn = true;
 
 console.log(chosenWord);
 
+// Change colour of guide button when hovered over
+$(".guide-tag").hover(function() {
+  $(".guide-tag").addClass("hover");
+}, function() {
+  $(".guide-tag").removeClass("hover");
+});
 
-// Set up the appearance and subsequent disappearance of the game instructions
-if (gameRound === 1 && !gameOn) {
-  $("#heading").addClass("dim-background");
-  $("#game-board").addClass("dim-background");
-  $("#keyboard").addClass("dim-background");
+// Bring up instructions if guide is clicked
+$(".guide-tag").click(function() {
 
-  $(".close-window").click(function() {
-    $("#instructions").fadeOut(500);
-    $("#heading").animate({opacity: 1}, 500);
-    $("#game-board").animate({opacity: 1}, 500);
-    $("#keyboard").animate({opacity: 1}, 500);
-    gameOn = true;
+  gameOn = false;
+  $("#instructions").fadeIn(500);
 
-  });
-}
+  $("#heading").animate({opacity: 0.5}, 200);
+  $("#game-board").animate({opacity: 0.5}, 200);
+  $("#keyboard").animate({opacity: 0.5}, 200);
+});
+
+$(".close-window").click(function() {
+  $("#instructions").fadeOut(500);
+  $("#heading").animate({opacity: 1}, 500);
+  $("#game-board").animate({opacity: 1}, 500);
+  $("#keyboard").animate({opacity: 1}, 500);
+  gameOn = true;
+
+});
+
 
 // Function to add each letter to guess row as user clicks
 $(".letter-key").click(function() {
 
-  console.log(userGuess);
-
-  // Only allow user to enter letters when game is on
+  // Only allow user to enter letters when game is on and etner no more than 5 letters
   if (gameOn && userGuess.length < 5) {
 
     let letter = userGuess.length + 1;
@@ -77,16 +86,16 @@ $(".del").click(function() {
 // Function to utilise ENTER key
 $(".enter").click(function() {
 
-  // Only sallow user to guess when game is on
+  // Only allow user to guess when game is on
   if (gameOn) {
 
+    // Check user entered correct length word
     if (userGuess.length === 5) {
 
       let guessedWord = userGuess.join("");
 
       if (wordList.includes(guessedWord.toLowerCase())) {
         checkGuess();
-        flipLetters();
         gameRound++;
 
         if (gameRound === 7 && guessedWord != chosenWord) {
@@ -182,6 +191,8 @@ function checkGuess() {
     }
 
   }
+
+  flipLetters();
 
 };
 
