@@ -10,6 +10,7 @@ var chosenLetters = chosenWord.split("");
 var userGuess = [];
 var gameRound = 1;
 var gameOn = true;
+var feedbackPresent = false;
 
 console.log(chosenWord);
 
@@ -41,11 +42,11 @@ $(".close-window").click(function() {
 });
 
 
-// Function to add each letter to guess row as user clicks
+// Function to add each letter to guess row as user clicks a letter
 $(".letter-key").click(function() {
 
   // Only allow user to enter letters when game is on and etner no more than 5 letters
-  if (gameOn && userGuess.length < 5) {
+  if (gameOn && userGuess.length < 5 && !feedbackPresent) {
 
     let letter = userGuess.length + 1;
     let letterEntered = $(this).text();
@@ -67,18 +68,22 @@ $(".letter-key").click(function() {
 // Function to utilise DEL key
 $(".del").click(function() {
 
-  let letter = userGuess.length;
+  if (!feedbackPresent) {
 
-  if (letter > 0) {
-    var guessSquare = $(".front-row-" + gameRound + "-letter-" + letter);
-    var answerSquare = $(".back-row-" + gameRound + "-letter-" + letter);
+    let letter = userGuess.length;
 
-    // Remove letters from guess and answer squares
-    guessSquare.text("");
-    answerSquare.text("");
+    if (letter > 0) {
+      var guessSquare = $(".front-row-" + gameRound + "-letter-" + letter);
+      var answerSquare = $(".back-row-" + gameRound + "-letter-" + letter);
 
-    // Remove letters from user guess array
-    userGuess.pop();
+      // Remove letters from guess and answer squares
+      guessSquare.text("");
+      answerSquare.text("");
+
+      // Remove letters from user guess array
+      userGuess.pop();
+    }
+
   }
 
 });
@@ -87,7 +92,7 @@ $(".del").click(function() {
 $(".enter").click(function() {
 
   // Only allow user to guess when game is on
-  if (gameOn) {
+  if (gameOn && !feedbackPresent) {
 
     // Check user entered correct length word
     if (userGuess.length === 5) {
@@ -96,58 +101,42 @@ $(".enter").click(function() {
 
       if (wordList.includes(guessedWord.toLowerCase())) {
         checkGuess();
-        gameRound++;
 
         if (gameRound === 7 && guessedWord != chosenWord) {
           gameLost();
-          setTimeout(function() {
-            $("#feedback").html("<strong>" + chosenWord + "</strong>");
-            $("#feedback").animate({opacity: 1});
-          }, 1200)
-        } else if (userGuess.join("") === chosenWord) {
-          // Animate tiles to jump
-          jumpTiles();
-          gameOn = false;
-          setTimeout(function() {
-            $("#feedback").html("<strong>Nice one!</strong>");
-            $("#feedback").animate({opacity: 1});
-          }, 1200)
-        }
-
-        if (gameOn) {
+        } else if (guessedWord === chosenWord) {
+          gameWon();
+        } else {
           userGuess = [];
         }
 
       } else {
-        $("#feedback").html("<strong>Not in word list</strong>");
-        $("#feedback").animate({opacity: 1}).delay(1000).animate({opacity: 0});
-        $(".row-" + gameRound).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50);
+        incorrectSubmission("Not in word list");
       }
 
     } else {
-      $("#feedback").html("<strong>Not enough letters</strong>");
-      $("#feedback").animate({opacity: 1}).delay(1000).animate({opacity: 0});
-      $(".row-" + gameRound).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50);
+      incorrectSubmission("Not enough letters");
     }
 
   }
 
 });
 
-// Function to check user guess against chosen wordList
+
+// Function to check user guess against chosen wordList, the colour is changed, the tiles are flipped and game round increased
 function checkGuess() {
 
   var chosenLettersCopy = [...chosenLetters];
 
-  // Turn correct letters blue
+  // Turn correct letters in right place blue
   for (var i = 0; i < 5; i++) {
 
-    var guessSquare = $(".back-row-" + gameRound + "-letter-" + (i + 1));
+    var answerSquare = $(".back-row-" + gameRound + "-letter-" + (i + 1));
     var guessedLetter = userGuess[i];
     var keyPressed = $("#" + guessedLetter);
 
     if (chosenLettersCopy.includes(guessedLetter) && guessedLetter === chosenLetters[i]) {
-      guessSquare.addClass("blue");
+      answerSquare.addClass("blue");
       if (keyPressed.hasClass("yellow")) {
         keyPressed.removeClass("yellow");
       }
@@ -156,17 +145,17 @@ function checkGuess() {
       chosenLettersCopy.splice(letterIndex, 1);
     }
 
-  }
+  };
 
   // Turn correct letters in wrong place yellow
   for (var i = 0; i < 5; i++) {
 
-    var guessSquare = $(".back-row-" + gameRound + "-letter-" + (i + 1));
+    var answerSquare = $(".back-row-" + gameRound + "-letter-" + (i + 1));
     var guessedLetter = userGuess[i];
     var keyPressed = $("#" + guessedLetter);
 
-    if (chosenLettersCopy.includes(guessedLetter) && !guessSquare.hasClass("blue")) {
-      guessSquare.addClass("yellow");
+    if (chosenLettersCopy.includes(guessedLetter) && !answerSquare.hasClass("blue")) {
+      answerSquare.addClass("yellow");
       if (!keyPressed.hasClass("blue")) {
         keyPressed.addClass("yellow");
       }
@@ -174,27 +163,32 @@ function checkGuess() {
       chosenLettersCopy.splice(letterIndex, 1);
     }
 
-  }
+  };
 
   // Turn incorrect letters black
   for (var i = 0; i < 5; i++) {
 
-    var guessSquare = $(".back-row-" + gameRound + "-letter-" + (i + 1));
+    var answerSquare = $(".back-row-" + gameRound + "-letter-" + (i + 1));
     var guessedLetter = userGuess[i];
     var keyPressed = $("#" + guessedLetter);
 
-    if (!chosenLettersCopy.includes(guessedLetter) && !guessSquare.hasClass("blue") && !guessSquare.hasClass("yellow")) {
-      guessSquare.addClass("black");
+    if (!chosenLettersCopy.includes(guessedLetter) && !answerSquare.hasClass("blue") && !answerSquare.hasClass("yellow")) {
+      answerSquare.addClass("black");
       if (!keyPressed.hasClass("blue") && !keyPressed.hasClass("yellow")) {
         keyPressed.addClass("black");
       }
     }
 
-  }
+  };
 
+  // Flip letters after assigning colours to back of cards
   flipLetters();
 
+  // Increase game round by 1
+  gameRound++;
+
 };
+
 
 // Animate letter entered
 function animateLetterPressed(letter) {
@@ -206,6 +200,7 @@ function animateLetterPressed(letter) {
   }, 100);
 
 };
+
 
 // Set up flip cards animation
 function setAllCards() {
@@ -220,10 +215,10 @@ function setAllCards() {
         front: ".front-row-" + j + "-letter-" + i,
         back: ".back-row-" + j + "-letter-" + i,
       });
-    }
-  }
+    };
+  };
 
-}
+};
 
 setAllCards();
 
@@ -245,16 +240,56 @@ function flipLetters() {
   }, delay*4);
 };
 
+
 // lost game function
 function gameLost() {
 
-  for (var i = 1; i < 7; i++) {
-    $(".back-row-6-letter-" + i).addClass("end-game");
-  }
-
   gameOn = false;
 
-}
+  for (var i = 1; i < 7; i++) {
+    $(".back-row-6-letter-" + i).addClass("end-game");
+  };
+
+  setTimeout(function() {
+    $("#feedback").html("<strong>" + chosenWord + "</strong>");
+    $("#feedback").animate({opacity: 1});
+  }, 1200);
+
+};
+
+
+// Game won Function
+function gameWon() {
+
+  var responses = ["Unbelievable!", "Amazing!", "Great!", "Well done!", "Nice!", "Finally!"];
+  var response = responses[gameRound - 2];
+
+  gameOn = false;
+  jumpTiles();
+
+  setTimeout(function() {
+    $("#feedback").html("<strong>" + response + "</strong>");
+    $("#feedback").animate({opacity: 1});
+  }, 1500);
+
+};
+
+
+// Incorrect submission Function
+function incorrectSubmission(response) {
+
+  feedbackPresent = true;
+
+  setTimeout(function() {
+    feedbackPresent = false;
+  }, 1000);
+
+  $("#feedback").html("<strong>" + response + "</strong>");
+  $("#feedback").animate({opacity: 1}).delay(750).animate({opacity: 0});
+  $(".row-" + gameRound).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50);
+
+};
+
 
 // Tile jump animation
 function jumpTiles() {
