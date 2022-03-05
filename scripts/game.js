@@ -26,18 +26,19 @@ $(".guide-tag").click(function() {
 
   gameOn = false;
   $("#instructions").fadeIn(500);
-
   $("#heading").animate({opacity: 0.5}, 200);
   $("#game-board").animate({opacity: 0.5}, 200);
   $("#keyboard").animate({opacity: 0.5}, 200);
+
 });
 
 $(".close-window").click(function() {
+
+  gameOn = true;
   $("#instructions").fadeOut(500);
   $("#heading").animate({opacity: 1}, 500);
   $("#game-board").animate({opacity: 1}, 500);
   $("#keyboard").animate({opacity: 1}, 500);
-  gameOn = true;
 
 });
 
