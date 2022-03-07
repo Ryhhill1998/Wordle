@@ -14,6 +14,16 @@ body {
   margin: 0 auto;
 }
 
+.options-tag {
+  font-size: 0.8rem;
+  color: grey;
+  position: absolute;
+  top: 36px;
+  right: 60%;
+  left: 0;
+  margin: 0 auto;
+}
+
 .hover {
   color: white;
 }
@@ -83,16 +93,6 @@ body {
   font-size: 1.7rem;
   color: white;
   border: 2px solid #4A403A;
-}
-
-.card-1-letter-1 {
-  background-color: #008E89;
-  border: 2px solid #008E89;
-}
-
-.card-2-letter-3 {
-  background-color: #FDB827;
-  border: 2px solid #FDB827;
 }
 
 .card-3-letter-4 {
@@ -171,6 +171,26 @@ body {
   color: #FDB827;
 }
 
+.red-letter {
+  color: #FF0000;
+}
+
+.pink-letter {
+  color: #FF95C5;
+}
+
+.green-letter {
+  color: #4E9F3D;
+}
+
+.purple-letter {
+  color: #9C19E0;
+}
+
+.bright-pink-letter {
+  color: #FF5DA2;
+}
+
 .green {
   background-color: #4E9F3D;
   border: 2px solid #4E9F3D;
@@ -216,6 +236,10 @@ body {
   opacity: 0.5;
 }
 
+.scheme-hover {
+  border: solid 2px white;
+}
+
 .end-game {
   color: red;
 }
@@ -230,6 +254,9 @@ body {
     padding: 0 5%;
   }
   #instructions {
+    width: 90%;
+  }
+  #options-page {
     width: 90%;
   }
 }
