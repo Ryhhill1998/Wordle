@@ -108,6 +108,11 @@ $(".scheme-1").click(function() {
 
   if (chosenColours != [newColour1, newColour2]) {
 
+    $(".card-1-letter-1").removeClass(oldColour1);
+    $(".card-1-letter-1").addClass(newColour1);
+    $(".card-2-letter-3").removeClass(oldColour2);
+    $(".card-2-letter-3").addClass(newColour2);
+
     var keyArray = $(".letter-key").text().split("");
     keyArray.forEach(function(letter) {
       var key = $("#" + letter);
@@ -154,6 +159,11 @@ $(".scheme-2").click(function() {
   var newColour2 = "pink";
 
   if (chosenColours != [newColour1, newColour2]) {
+
+    $(".card-1-letter-1").removeClass(oldColour1);
+    $(".card-1-letter-1").addClass(newColour1);
+    $(".card-2-letter-3").removeClass(oldColour2);
+    $(".card-2-letter-3").addClass(newColour2);
 
     var keyArray = $(".letter-key").text().split("");
     keyArray.forEach(function(letter) {
@@ -202,6 +212,11 @@ $(".scheme-3").click(function() {
 
   if (chosenColours != [newColour1, newColour2]) {
 
+    $(".card-1-letter-1").removeClass(oldColour1);
+    $(".card-1-letter-1").addClass(newColour1);
+    $(".card-2-letter-3").removeClass(oldColour2);
+    $(".card-2-letter-3").addClass(newColour2);
+
     var keyArray = $(".letter-key").text().split("");
     keyArray.forEach(function(letter) {
       var key = $("#" + letter);
@@ -248,6 +263,11 @@ $(".scheme-4").click(function() {
   var newColour2 = "bright-pink";
 
   if (chosenColours != [newColour1, newColour2]) {
+
+    $(".card-1-letter-1").removeClass(oldColour1);
+    $(".card-1-letter-1").addClass(newColour1);
+    $(".card-2-letter-3").removeClass(oldColour2);
+    $(".card-2-letter-3").addClass(newColour2);
 
     var keyArray = $(".letter-key").text().split("");
     keyArray.forEach(function(letter) {
