@@ -78,11 +78,67 @@ body {
   font-size: 0.9rem;
 }
 
+#score-chart {
+  /* display: none; */
+  padding: 20px 12px;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 17%;
+  width: 510px;
+  height: 570px;
+  border: 1px solid #4A403A;
+  border-radius: 1.5%;
+  background-color: black;
+  color: white;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.score-heading {
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 2;
+  font-family: 'Roboto', sans-serif;
+}
+
+.figure {
+  font-size: 2.15rem;
+  margin: 0;
+  height: 45px;
+}
+
+.game-stats {
+  width: 80%;
+  padding: 20px 0 40px;
+}
+
+.guess-distribution {
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 2;
+  font-family: 'Roboto', sans-serif;
+  padding: 0px 20px 0;
+}
+
+.caption {
+  font-size: 0.8rem;
+}
+
+.chart-area {
+  padding: 20px 0 40px;
+  width: 80%;
+}
+
 .close-window {
   background-color: black;
   border-color: black;
-  padding: 0 6px;
   float: right;
+  padding: 0 6px;
+  font-size: 1rem;
+  font-family: var(--bs-body-font-family);
 }
 
 .example {
@@ -257,6 +313,9 @@ body {
     width: 90%;
   }
   #options-page {
+    width: 90%;
+  }
+  #score-chart {
     width: 90%;
   }
 }
