@@ -15,7 +15,7 @@ var feedbackPresent = false;
 var colour1 = localStorage.getItem("colour1") ?? "blue";
 var colour2 = localStorage.getItem("colour2") ?? "yellow";
 
-let chartColours = ["grey", "grey", "grey", "grey", "grey", "grey"];
+var chartColours = ["grey", "grey", "grey", "grey", "grey", "grey"];
 
 console.log(chosenWord);
 
@@ -123,6 +123,15 @@ $(".close-window").click(function() {
   $("#keyboard").animate({opacity: 1}, 500);
 
 });
+
+// Close stats window
+$(".close-stats").click(function() {
+  $("#score-chart").fadeOut(500);
+  $("#heading").animate({opacity: 1}, 500);
+  $("#game-board").animate({opacity: 1}, 500);
+  $("#keyboard").animate({opacity: 1}, 500);
+});
+
 
 // Change game theme if scheme clicked on
 // Blue and yellow scheme

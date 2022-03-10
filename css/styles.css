@@ -80,7 +80,7 @@ body {
 
 #score-chart {
   display: none;
-  padding: 20px 12px;
+  padding: 0 12px;
   position: absolute;
   z-index: 1;
   left: 0;
@@ -88,7 +88,7 @@ body {
   margin: 0 auto;
   top: 17%;
   width: 510px;
-  height: 570px;
+  height: 480px;
   border: 1px solid #4A403A;
   border-radius: 1.5%;
   background-color: black;
@@ -98,6 +98,7 @@ body {
 }
 
 .score-heading {
+  padding-top: 30px;
   font-size: 1.2rem;
   font-weight: bold;
   line-height: 2;
@@ -112,7 +113,7 @@ body {
 
 .game-stats {
   width: 80%;
-  padding: 20px 0 40px;
+  padding: 10px 0 20px;
 }
 
 .guess-distribution {
@@ -128,8 +129,8 @@ body {
 }
 
 .chart-area {
-  padding: 20px 0 40px;
-  width: 80%;
+  padding-bottom: 40px;
+  width: 85%;
 }
 
 .close-window {
@@ -137,7 +138,13 @@ body {
   border-color: black;
   float: right;
   padding: 0 6px;
-  font-size: 1rem;
+}
+
+.close-stats {
+  background-color: black;
+  border-color: black;
+  float: right;
+  padding: 0 6px;
   font-family: var(--bs-body-font-family);
 }
 
