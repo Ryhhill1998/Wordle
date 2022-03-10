@@ -41,7 +41,7 @@ var maxStreak = parseInt(localStorage.getItem("maxStreak") ?? "0");
 // localStorage.removeItem("scoreDistribution");
 var scoreDistribution = JSON.parse(localStorage.getItem("scoreDistribution")) ?? [0, 0, 0, 0, 0, 0];
 
-createChart(scoreDistribution, chartColours);
+// createChart(scoreDistribution, chartColours);
 
 // Change colour of guide button when hovered over
 $(".guide-tag").hover(function() {
