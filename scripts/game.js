@@ -577,7 +577,7 @@ function gameLost() {
 
   localStorage.setItem("currentStreak", JSON.stringify(currentStreak));
 
-  var winPercentage = 100 * (timesPlayed / scoresList.length);
+  var winPercentage = Math.round(100 * (scoresList.length / timesPlayed));
 
   $(".games-played").text(timesPlayed);
   $(".win-percent").text(winPercentage);
