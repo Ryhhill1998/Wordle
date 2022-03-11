@@ -148,6 +148,7 @@ $("#change-theme").click(function() {
 
 // Open game stats page to show player in game statistics
 $("#game-stats").click(function() {
+  chartColours[gameRound - 2] = $("#o-heading").css("color");
   createChart(scoreDistribution, chartColours);
   showStats();
   $("#options-menu").fadeOut(300);
