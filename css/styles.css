@@ -4,6 +4,7 @@ body {
   background-color: black;
   color: white;
   font-size: 0.8rem;
+  font-family: 'Roboto', sans-serif;
 }
 
 h1 {
@@ -28,7 +29,7 @@ h3 {
 /* General popup style */
 .pop-up {
   display: none;
-  padding: 0 12px;
+  padding: 2px 12px;
   position: absolute;
   z-index: 1;
   left: 0;
@@ -60,6 +61,27 @@ h3 {
 .flex-row {
   position: relative;
   text-align: center;
+}
+
+/* Options dropdown menu */
+#options-menu {
+  color: grey;
+  background-color: black;
+  border-radius: 0;
+  height: calc(100% - 60px);
+  right: auto;
+  top: 60px;
+  width: 330px;
+  text-align: left;
+}
+
+#daily-challenge {
+  font-size: 1.2rem;
+}
+
+.dropdown-options {
+  font-size: 1rem;
+  margin: 40px 40px 0;
 }
 
 /* Score chart page */
@@ -98,7 +120,7 @@ h3 {
 
 /* Navigation bar */
 #navigator {
-  width: 85%;
+  height: 60px;
   margin-bottom: 0;
   padding: 0;
   border-bottom: solid 2px grey;
@@ -107,23 +129,22 @@ h3 {
 .nav-tag {
   font-size: 0.8rem;
   color: grey;
-  position: absolute;
+  position: fixed;
+  width: max-content;
   top: 30px;
-  left: 60%;
-  right: 0;
-  margin: 0 auto;
+  right: 50px;
 }
 
 .options-tag {
-  right: 60%;
-  left: 0;
+  left: 50px;
 }
 
 
 /* Main area including guess board and keyboard */
 /* Guess board including feedback */
 #guess-board {
-  padding: 10px 20px 60px;
+  padding: 1% 2% 3%;
+  height: 100%;
 }
 
 #feedback {
@@ -157,7 +178,7 @@ h3 {
   background: #7F7C82;
   margin: 3px;
   border-radius: 8%;
-  padding: 14px 10px 10px;
+  padding: 16px 10px 10px;
 }
 
 .func-key {
@@ -253,9 +274,15 @@ h3 {
   border: solid 2px white;
 }
 
+
 /* Game lost effect */
 .game-lost {
   color: red;
+}
+
+/* No scroll */
+.no-scroll {
+  overflow: hidden;
 }
 
 

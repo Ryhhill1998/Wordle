@@ -10,8 +10,6 @@ var chosenWord = wordList[Math.floor(Math.random() * wordList.length)].toUpperCa
 var chosenLetters = chosenWord.split("");
 console.log(chosenWord);
 
-// createChart(scoreDistribution, chartColours);
-
 // Set up remaining game variables
 // Create variables not held in localStorage
 var userGuess = [];
@@ -72,6 +70,14 @@ $(".options-tag").hover(function() {
   $(".options-tag").removeClass("hover");
 });
 
+// Change colour of dropdown-options when hovered over
+$(".dropdown-options").hover(function() {
+  $(this).addClass("hover");
+}, function() {
+  $(this).removeClass("hover");
+});
+
+
 // Change border colour of each scheme option when hovered cover
 var hoveredScheme = "";
 
@@ -102,11 +108,11 @@ $(".nav-tag").click(function() {
 
   if ($(this).hasClass("guide-tag")) {
     popupPage = "#instructions";
+    $("#main-body").animate({opacity: 0.5}, 200);
   } else {
-    popupPage = "#options-page";
+    popupPage = "#options-menu";
   }
   $(popupPage).fadeIn(500);
-  $("#main-body").animate({opacity: 0.5}, 200);
 });
 
 // Close correct popup when X is clicked
@@ -115,6 +121,8 @@ $(".close-window").click(function() {
 
   if ($(this).hasClass("close-instructions")) {
     popupPage = "#instructions";
+  } else if ($(this).hasClass("close-dropdown")) {
+    popupPage = "#options-menu";
   } else {
     popupPage = "#options-page";
   }
@@ -128,6 +136,20 @@ $(".close-stats").click(function() {
   $("#main-body").animate({opacity: 1}, 200);
 });
 
+// Open options page to choose theme when Change Theme is clicked
+$("#change-theme").click(function() {
+  $("#options-menu").fadeOut(300);
+  $("#options-page").fadeIn(500);
+  $("#main-body").animate({opacity: 0.5}, 200);
+});
+
+// Open game stats page to show player in game statistics
+$("#game-stats").click(function() {
+  createChart(scoreDistribution, chartColours);
+  $("#options-menu").fadeOut(300);
+  $("#score-chart").fadeIn(500);
+  $("#main-body").animate({opacity: 0.5}, 200);
+});
 
 // Change game theme depending upon the colour scheme clicked on and close popup when scheme selected
 var newColour1 = "";
@@ -197,11 +219,6 @@ $(".scheme").click(function() {
     colour2 = localStorage.getItem("colour2");
 
   }
-
-  // Close scheme selections window
-  $("#options-page").fadeOut(1000);
-  $("#main-body").animate({opacity: 1}, 500);
-  gameOn = true;
 
 });
 
