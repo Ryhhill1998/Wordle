@@ -129,7 +129,7 @@ h3 {
 .nav-tag {
   font-size: 0.8rem;
   color: grey;
-  position: fixed;
+  position: absolute;
   width: max-content;
   top: 30px;
   right: 50px;
