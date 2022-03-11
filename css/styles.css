@@ -294,7 +294,7 @@ h3 {
     padding: 0 5%;
   }
   #guess-board {
-    padding-bottom: 20px;
+    padding-bottom: 10px;
   }
   #instructions {
     width: 90%;
@@ -304,5 +304,8 @@ h3 {
   }
   #score-chart {
     width: 90%;
+  }
+  #options-menu {
+    width: 100%;
   }
 }

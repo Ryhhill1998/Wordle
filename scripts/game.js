@@ -10,6 +10,8 @@ var chosenWord = wordList[Math.floor(Math.random() * wordList.length)].toUpperCa
 var chosenLetters = chosenWord.split("");
 console.log(chosenWord);
 
+var scoresChart = "";
+
 // Set up remaining game variables
 // Create variables not held in localStorage
 var userGuess = [];
@@ -134,6 +136,7 @@ $(".close-window").click(function() {
 $(".close-stats").click(function() {
   $("#score-chart").fadeOut(500);
   $("#main-body").animate({opacity: 1}, 200);
+  scoresChart.destroy();
 });
 
 // Open options page to choose theme when Change Theme is clicked
@@ -146,6 +149,7 @@ $("#change-theme").click(function() {
 // Open game stats page to show player in game statistics
 $("#game-stats").click(function() {
   createChart(scoreDistribution, chartColours);
+  showStats();
   $("#options-menu").fadeOut(300);
   $("#score-chart").fadeIn(500);
   $("#main-body").animate({opacity: 0.5}, 200);
@@ -461,15 +465,10 @@ function gameWon() {
 
   localStorage.setItem("currentStreak", JSON.stringify(currentStreak));
 
-  var winPercentage = Math.round(100 * (scoresList.length / timesPlayed));
-
-  $(".games-played").text(timesPlayed);
-  $(".win-percent").text(winPercentage);
-  $(".current-streak").text(currentStreak);
-  $(".max-streak").text(maxStreak);
-
   scoreDistribution[gameRound - 2]++;
   localStorage.setItem("scoreDistribution", JSON.stringify(scoreDistribution));
+
+  showStats();
 
   setTimeout(function() {
     $("#score-chart").fadeIn(700);
@@ -478,7 +477,7 @@ function gameWon() {
 
   setTimeout(function() {
     createChart(scoreDistribution, chartColours);
-  }, 3500);
+  }, 3000);
 
 };
 
@@ -627,6 +626,19 @@ function createChart(scores, colours) {
     };
 
     var ctx = $('#myChart');
-    var scoresChart = new Chart(ctx, myScoresChart)
+    scoresChart = new Chart(ctx, myScoresChart);
+
+};
+
+
+// Display game statistics
+function showStats() {
+
+  var winPercentage = Math.round(100 * (scoresList.length / timesPlayed));
+
+  $(".games-played").text(timesPlayed);
+  $(".win-percent").text(winPercentage);
+  $(".current-streak").text(currentStreak);
+  $(".max-streak").text(maxStreak);
 
 };
