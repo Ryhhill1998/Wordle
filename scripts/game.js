@@ -41,7 +41,7 @@ var maxStreak = parseInt(localStorage.getItem("maxStreak") ?? "0");
 // localStorage.removeItem("scoreDistribution");
 var scoreDistribution = JSON.parse(localStorage.getItem("scoreDistribution")) ?? [0, 0, 0, 0, 0, 0];
 
-createChart(scoreDistribution, chartColours);
+// createChart(scoreDistribution, chartColours);
 
 // Change colour of guide button when hovered over
 $(".guide-tag").hover(function() {
@@ -102,7 +102,7 @@ $(".options-tag").click(function() {
   $("#main-body").animate({opacity: 0.5}, 200);
 });
 
-$(".close-window").click(function() {
+$(".close-options").click(function() {
   gameOn = true;
   $("#options-page").fadeOut(500);
   $("#main-body").animate({opacity: 1}, 200);
@@ -363,7 +363,7 @@ $(".letter-key").click(function() {
 });
 
 // Function to utilise DEL key
-$(".del").click(function() {
+$("#del").click(function() {
 
   if (!feedbackPresent) {
 
@@ -386,7 +386,7 @@ $(".del").click(function() {
 });
 
 // Function to utilise ENTER key
-$(".enter").click(function() {
+$("#enter").click(function() {
 
   // Only allow user to guess when game is on
   if (gameOn && !feedbackPresent) {
@@ -544,7 +544,7 @@ function gameLost() {
   gameOn = false;
 
   for (var i = 1; i < 7; i++) {
-    $(".back-row-6-letter-" + i).addClass("end-game");
+    $(".back-row-6-letter-" + i).addClass("game-lost");
   };
 
   setTimeout(function() {

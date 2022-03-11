@@ -24,7 +24,7 @@
 
   <!-- Instructions page -->
 
-  <div id="instructions" class="container-fluid">
+  <div id="instructions" class="container-fluid pop-up">
     <br>
     <p>Guess the <strong>WORDLE</strong> in six attempts.<button type="button" class="btn btn-dark close-window">X</button></p>
     <p>Each guess must be a five-letter word in the word list. Hit the enter button to submit.</p>
@@ -99,9 +99,9 @@
 
   <!-- Options page that allows user to choose a colour scheme -->
 
-  <div id="options-page" class="container-fluid">
+  <div id="options-page" class="container-fluid pop-up">
     <br>
-    <p><strong>Select a colour scheme:</strong><button type="button" class="btn btn-dark close-window">X</button></p>
+    <p><strong>Select a colour scheme:</strong><button type="button" class="btn btn-dark close-options close-window">X</button></p>
     <hr>
 
     <p><strong>Scheme 1</strong></p>
@@ -192,12 +192,13 @@
 
   </div>
 
+  <!-- Score chart page to show user their stats after playing -->
 
-  <div id="score-chart" class="container-fluid">
+  <div id="score-chart" class="container-fluid pop-up">
     <div>
-      <button type="button" class="btn btn-dark close-stats">X</button></p>
+      <button type="button" class="btn btn-dark close-window close-stats">X</button></p>
     </div>
-    <h2 class="score-heading">STATISTICS</h2>
+    <h3>STATISTICS</h3>
     <div class="container-fluid game-stats">
       <div class="row">
         <div class="col">
@@ -218,23 +219,29 @@
         </div>
       </div>
     </div>
-    <h2 class="guess-distribution">GUESS DISTRIBUTION</h2>
+    <h3>GUESS DISTRIBUTION</h3>
     <div class="container-fluid chart-area">
       <canvas id="myChart" style="width:100%;height: 160px"></canvas>
     </div>
   </div>
 
+  <!-- Main body of the game -->
+
   <div id="main-body" class="container-fluid">
+
+    <!-- Header containing the navigation bar and the logo -->
 
     <header>
 
       <div id="navigator" class="container-fluid">
-        <h2 class="options-tag"><strong>Options</strong></h2>
+        <h2 class="nav-tag options-tag"><strong>Options</strong></h2>
         <h1 id="heading">W<span id="o-heading">o</span>r<span id="d-heading">d</span>l<span id="e-heading">e</span></h1>
-        <h2 class="guide-tag"><strong>Guide</strong></h2>
+        <h2 class="nav-tag guide-tag"><strong>Guide</strong></h2>
       </div>
 
     </header>
+
+    <!-- Guess board container with the two sided letter cards -->
 
     <div id="guess-board" class="container-fluid">
 
@@ -538,6 +545,8 @@
 
     </div>
 
+    <!-- Keyboard container with all of the keys for user input -->
+
     <div id="keyboard" class="container-fluid">
 
       <div class="d-flex flex-row justify-content-center key-row-1">
@@ -566,7 +575,7 @@
       </div>
 
       <div class="d-flex flex-row justify-content-center key-row-3">
-        <div class="key enter"><strong>ENTER</strong></div>
+        <div id="enter" class="key func-key"><strong>ENTER</strong></div>
         <div id="Z" class="key letter-key"><strong>Z</strong></div>
         <div id="X" class="key letter-key"><strong>X</strong></div>
         <div id="C" class="key letter-key"><strong>C</strong></div>
@@ -574,7 +583,7 @@
         <div id="B" class="key letter-key"><strong>B</strong></div>
         <div id="N" class="key letter-key"><strong>N</strong></div>
         <div id="M" class="key letter-key"><strong>M</strong></div>
-        <div class="key del"><strong>DEL</strong></div>
+        <div id="del" class="key func-key"><strong>DEL</strong></div>
       </div>
 
     </div>
