@@ -46,7 +46,7 @@ var maxStreak = parseInt(JSON.parse(localStorage.getItem("maxStreak")) ?? "0");
 var scoreDistribution = JSON.parse(localStorage.getItem("scoreDistribution")) ?? [0, 0, 0, 0, 0, 0];
 
 
-
+// Update colour of logo and guide cards with colours chosen by user
 $("#o-heading").addClass(colour1 + "-letter");
 $("#d-heading").addClass(colour2 + "-letter");
 $("#e-heading").addClass(colour1 + "-letter");
@@ -55,9 +55,9 @@ $(".card-1-letter-1").addClass(colour1);
 $(".card-2-letter-3").addClass(colour2);
 
 
+// Set up navbar interactions
 
-
-
+// Hover colour classes
 // Change colour of guide button when hovered over
 $(".guide-tag").hover(function() {
   $(".guide-tag").addClass("hover");
@@ -73,53 +73,52 @@ $(".options-tag").hover(function() {
 });
 
 // Change border colour of each scheme option when hovered cover
-$(".scheme-1").hover(function() {
-  $(".scheme-1").addClass("scheme-hover");
+var hoveredScheme = "";
+
+$(".scheme").hover(function() {
+
+  if ($(this).hasClass("scheme-1")) {
+    hoveredScheme = ".scheme-1";
+  } else if ($(this).hasClass("scheme-2")) {
+    hoveredScheme = ".scheme-2";
+  } else if ($(this).hasClass("scheme-3")) {
+    hoveredScheme = ".scheme-3";
+  } else {
+    hoveredScheme = ".scheme-4";
+  }
+
+  $(hoveredScheme).addClass("scheme-hover");
+
 }, function() {
-  $(".scheme-1").removeClass("scheme-hover");
+  $(hoveredScheme).removeClass("scheme-hover");
 });
 
-$(".scheme-2").hover(function() {
-  $(".scheme-2").addClass("scheme-hover");
-}, function() {
-  $(".scheme-2").removeClass("scheme-hover");
-});
 
-$(".scheme-3").hover(function() {
-  $(".scheme-3").addClass("scheme-hover");
-}, function() {
-  $(".scheme-3").removeClass("scheme-hover");
-});
+// Show popups when correct nav-tag is clicked
+var popupPage = "";
 
-$(".scheme-4").hover(function() {
-  $(".scheme-4").addClass("scheme-hover");
-}, function() {
-  $(".scheme-4").removeClass("scheme-hover");
-});
-
-// Bring up instructions if guide is clicked
-$(".guide-tag").click(function() {
+$(".nav-tag").click(function() {
   gameOn = false;
-  $("#instructions").fadeIn(500);
+
+  if ($(this).hasClass("guide-tag")) {
+    popupPage = "#instructions";
+  } else {
+    popupPage = "#options-page";
+  }
+  $(popupPage).fadeIn(500);
   $("#main-body").animate({opacity: 0.5}, 200);
 });
 
+// Close correct popup when X is clicked
 $(".close-window").click(function() {
   gameOn = true;
-  $("#instructions").fadeOut(500);
-  $("#main-body").animate({opacity: 1}, 200);
-});
 
-// Bring up options page if options is clicked
-$(".options-tag").click(function() {
-  gameOn = false;
-  $("#options-page").fadeIn(500);
-  $("#main-body").animate({opacity: 0.5}, 200);
-});
-
-$(".close-options").click(function() {
-  gameOn = true;
-  $("#options-page").fadeOut(500);
+  if ($(this).hasClass("close-instructions")) {
+    popupPage = "#instructions";
+  } else {
+    popupPage = "#options-page";
+  }
+  $(popupPage).fadeOut(500);
   $("#main-body").animate({opacity: 1}, 200);
 });
 
@@ -130,14 +129,28 @@ $(".close-stats").click(function() {
 });
 
 
-// Change game theme if scheme clicked on
-// Blue and yellow scheme
-$(".scheme-1").click(function() {
+// Change game theme depending upon the colour scheme clicked on and close popup when scheme selected
+var newColour1 = "";
+var newColour2 = "";
+
+$(".scheme").click(function() {
 
   var oldColour1 = colour1;
   var oldColour2 = colour2;
-  var newColour1 = "blue";
-  var newColour2 = "yellow";
+
+  if ($(this).hasClass("scheme-1")) {
+    newColour1 = "blue";
+    newColour2 = "yellow";
+  } else if ($(this).hasClass("scheme-2")) {
+    newColour1 = "red";
+    newColour2 = "pink";
+  } else if ($(this).hasClass("scheme-3")) {
+    newColour1 = "green";
+    newColour2 = "yellow";
+  } else {
+    newColour1 = "purple";
+    newColour2 = "bright-pink";
+  }
 
   if ([oldColour1, oldColour2] != [newColour1, newColour2]) {
 
@@ -185,175 +198,17 @@ $(".scheme-1").click(function() {
 
   }
 
-});
-
-// Red and pink scheme
-$(".scheme-2").click(function() {
-
-  var oldColour1 = colour1;
-  var oldColour2 = colour2;
-  var newColour1 = "red";
-  var newColour2 = "pink";
-
-  if ([oldColour1, oldColour2] != [newColour1, newColour2]) {
-
-    $(".card-1-letter-1").removeClass(oldColour1);
-    $(".card-1-letter-1").addClass(newColour1);
-    $(".card-2-letter-3").removeClass(oldColour2);
-    $(".card-2-letter-3").addClass(newColour2);
-
-    var keyArray = $(".letter-key").text().split("");
-    keyArray.forEach(function(letter) {
-      var key = $("#" + letter);
-      if (key.hasClass(oldColour1)) {
-        key.removeClass(oldColour1);
-        key.addClass(newColour1)
-      } else if (key.hasClass(oldColour2) && oldColour2 != newColour2) {
-        key.removeClass(oldColour2);
-        key.addClass(newColour2)
-      }
-    });
-
-    for (var j = 1; j < gameRound; j++) {
-      for (var i = 1; i < 7; i++) {
-        var cardBack = $(".back-row-" + j + "-letter-" + i);
-        if (cardBack.hasClass(oldColour1)) {
-          cardBack.removeClass(oldColour1);
-          cardBack.addClass(newColour1);
-        } else if (cardBack.hasClass(oldColour2) && oldColour2 != newColour2) {
-          cardBack.removeClass(oldColour2);
-          cardBack.addClass(newColour2);
-        }
-      }
-    }
-
-    $("#o-heading").removeClass(oldColour1 + "-letter");
-    $("#o-heading").addClass(newColour1 + "-letter");
-    $("#d-heading").removeClass(oldColour2 + "-letter");
-    $("#d-heading").addClass(newColour2 + "-letter");
-    $("#e-heading").removeClass(oldColour1 + "-letter");
-    $("#e-heading").addClass(newColour1 + "-letter");
-
-    localStorage.setItem("colour1", newColour1);
-    localStorage.setItem("colour2", newColour2);
-    colour1 = localStorage.getItem("colour1");
-    colour2 = localStorage.getItem("colour2");
-
-  }
+  // Close scheme selections window
+  $("#options-page").fadeOut(1000);
+  $("#main-body").animate({opacity: 1}, 500);
+  gameOn = true;
 
 });
 
-// Green and yellow scheme
-$(".scheme-3").click(function() {
 
-  var oldColour1 = colour1;
-  var oldColour2 = colour2;
-  var newColour1 = "green";
-  var newColour2 = "yellow";
+// GAME FUNCTIONALITY
 
-  if ([oldColour1, oldColour2] != [newColour1, newColour2]) {
-
-    $(".card-1-letter-1").removeClass(oldColour1);
-    $(".card-1-letter-1").addClass(newColour1);
-    $(".card-2-letter-3").removeClass(oldColour2);
-    $(".card-2-letter-3").addClass(newColour2);
-
-    var keyArray = $(".letter-key").text().split("");
-    keyArray.forEach(function(letter) {
-      var key = $("#" + letter);
-      if (key.hasClass(oldColour1)) {
-        key.removeClass(oldColour1);
-        key.addClass(newColour1)
-      } else if (key.hasClass(oldColour2) && oldColour2 != newColour2) {
-        key.removeClass(oldColour2);
-        key.addClass(newColour2)
-      }
-    });
-
-    for (var j = 1; j < gameRound; j++) {
-      for (var i = 1; i < 7; i++) {
-        var cardBack = $(".back-row-" + j + "-letter-" + i);
-        if (cardBack.hasClass(oldColour1)) {
-          cardBack.removeClass(oldColour1);
-          cardBack.addClass(newColour1);
-        } else if (cardBack.hasClass(oldColour2) && oldColour2 != newColour2) {
-          cardBack.removeClass(oldColour2);
-          cardBack.addClass(newColour2);
-        }
-      }
-    }
-
-    $("#o-heading").removeClass(oldColour1 + "-letter");
-    $("#o-heading").addClass(newColour1 + "-letter");
-    $("#d-heading").removeClass(oldColour2 + "-letter");
-    $("#d-heading").addClass(newColour2 + "-letter");
-    $("#e-heading").removeClass(oldColour1 + "-letter");
-    $("#e-heading").addClass(newColour1 + "-letter");
-
-    localStorage.setItem("colour1", newColour1);
-    localStorage.setItem("colour2", newColour2);
-    colour1 = localStorage.getItem("colour1");
-    colour2 = localStorage.getItem("colour2");
-
-  }
-
-});
-
-// Purple and bright-pink scheme
-$(".scheme-4").click(function() {
-
-  var oldColour1 = colour1;
-  var oldColour2 = colour2;
-  var newColour1 = "purple";
-  var newColour2 = "bright-pink";
-
-  if ([oldColour1, oldColour2] != [newColour1, newColour2]) {
-
-    $(".card-1-letter-1").removeClass(oldColour1);
-    $(".card-1-letter-1").addClass(newColour1);
-    $(".card-2-letter-3").removeClass(oldColour2);
-    $(".card-2-letter-3").addClass(newColour2);
-
-    var keyArray = $(".letter-key").text().split("");
-    keyArray.forEach(function(letter) {
-      var key = $("#" + letter);
-      if (key.hasClass(oldColour1)) {
-        key.removeClass(oldColour1);
-        key.addClass(newColour1)
-      } else if (key.hasClass(oldColour2) && oldColour2 != newColour2) {
-        key.removeClass(oldColour2);
-        key.addClass(newColour2)
-      }
-    });
-
-    for (var j = 1; j < gameRound; j++) {
-      for (var i = 1; i < 7; i++) {
-        var cardBack = $(".back-row-" + j + "-letter-" + i);
-        if (cardBack.hasClass(oldColour1)) {
-          cardBack.removeClass(oldColour1);
-          cardBack.addClass(newColour1);
-        } else if (cardBack.hasClass(oldColour2) && oldColour2 != newColour2) {
-          cardBack.removeClass(oldColour2);
-          cardBack.addClass(newColour2);
-        }
-      }
-    }
-
-    $("#o-heading").removeClass(oldColour1 + "-letter");
-    $("#o-heading").addClass(newColour1 + "-letter");
-    $("#d-heading").removeClass(oldColour2 + "-letter");
-    $("#d-heading").addClass(newColour2 + "-letter");
-    $("#e-heading").removeClass(oldColour1 + "-letter");
-    $("#e-heading").addClass(newColour1 + "-letter");
-
-    localStorage.setItem("colour1", newColour1);
-    localStorage.setItem("colour2", newColour2);
-    colour1 = localStorage.getItem("colour1");
-    colour2 = localStorage.getItem("colour2");
-  }
-
-});
-
+// User inputs on keyboard
 // Function to add each letter to guess row as user clicks a letter
 $(".letter-key").click(function() {
 
@@ -435,6 +290,24 @@ $("#enter").click(function() {
 });
 
 
+// Functions called when ENTER key presssed
+
+// Incorrect submission Function
+function incorrectSubmission(response) {
+
+  feedbackPresent = true;
+
+  setTimeout(function() {
+    feedbackPresent = false;
+  }, 1000);
+
+  $("#feedback").html("<strong>" + response + "</strong>");
+  $("#feedback").animate({opacity: 1}).delay(750).animate({opacity: 0});
+  $(".row-" + gameRound).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50);
+
+};
+
+
 // Function to check user guess against chosen wordList, the colour is changed, the tiles are flipped and game round increased
 function checkGuess() {
 
@@ -502,56 +375,7 @@ function checkGuess() {
 };
 
 
-// Animate letter entered
-function animateLetterPressed(letter) {
-
-  $(letter).addClass("pressed");
-
-  setTimeout(function() {
-    $(letter).removeClass("pressed");
-  }, 100);
-
-};
-
-
-// Set up flip cards animation
-function setAllCards() {
-
-  for (var j = 1; j < 7; j++) {
-    for (var i = 1; i < 6; i++) {
-      var card = $("#card.row-" + j + "-letter-" + i);
-      card.flip({
-        axis: "x",
-        trigger: "manual",
-        speed: 650,
-        front: ".front-row-" + j + "-letter-" + i,
-        back: ".back-row-" + j + "-letter-" + i,
-      });
-    };
-  };
-
-};
-
-setAllCards();
-
-function flipLetters() {
-  var i = gameRound;
-  var delay = 300;
-  $("#card.row-" + i + "-letter-1").flip(true);
-  setTimeout(function() {
-    $("#card.row-" + i + "-letter-2").flip(true);
-  }, delay);
-  setTimeout(function() {
-    $("#card.row-" + i + "-letter-3").flip(true);
-  }, delay*2);
-  setTimeout(function() {
-    $("#card.row-" + i + "-letter-4").flip(true);
-  }, delay*3);
-  setTimeout(function() {
-    $("#card.row-" + i + "-letter-5").flip(true);
-  }, delay*4);
-};
-
+// End of game Functions
 
 // lost game function
 function gameLost() {
@@ -588,7 +412,6 @@ function gameLost() {
   }, 3000);
 
 };
-
 
 // Game won Function
 function gameWon() {
@@ -643,21 +466,56 @@ function gameWon() {
 };
 
 
-// Incorrect submission Function
-function incorrectSubmission(response) {
+// ANIMATIONS
 
-  feedbackPresent = true;
+// Animate letter entered
+function animateLetterPressed(letter) {
+
+  $(letter).addClass("pressed");
 
   setTimeout(function() {
-    feedbackPresent = false;
-  }, 1000);
-
-  $("#feedback").html("<strong>" + response + "</strong>");
-  $("#feedback").animate({opacity: 1}).delay(750).animate({opacity: 0});
-  $(".row-" + gameRound).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50).animate({left: 5}, 50).animate({left: -5}, 50).animate({left: 0}, 50);
+    $(letter).removeClass("pressed");
+  }, 100);
 
 };
 
+// Set up flip cards animation
+function setAllCards() {
+
+  for (var j = 1; j < 7; j++) {
+    for (var i = 1; i < 6; i++) {
+      var card = $("#card.row-" + j + "-letter-" + i);
+      card.flip({
+        axis: "x",
+        trigger: "manual",
+        speed: 650,
+        front: ".front-row-" + j + "-letter-" + i,
+        back: ".back-row-" + j + "-letter-" + i,
+      });
+    };
+  };
+
+};
+
+setAllCards();
+
+function flipLetters() {
+  var i = gameRound;
+  var delay = 300;
+  $("#card.row-" + i + "-letter-1").flip(true);
+  setTimeout(function() {
+    $("#card.row-" + i + "-letter-2").flip(true);
+  }, delay);
+  setTimeout(function() {
+    $("#card.row-" + i + "-letter-3").flip(true);
+  }, delay*2);
+  setTimeout(function() {
+    $("#card.row-" + i + "-letter-4").flip(true);
+  }, delay*3);
+  setTimeout(function() {
+    $("#card.row-" + i + "-letter-5").flip(true);
+  }, delay*4);
+};
 
 // Tile jump animation
 function jumpTiles() {
@@ -683,6 +541,8 @@ function jumpTiles() {
 
 };
 
+
+// EXTRAS
 // Create chart Function
 function createChart(scores, colours) {
 
