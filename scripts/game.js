@@ -41,7 +41,7 @@ var maxStreak = parseInt(localStorage.getItem("maxStreak") ?? "0");
 // localStorage.removeItem("scoreDistribution");
 var scoreDistribution = JSON.parse(localStorage.getItem("scoreDistribution")) ?? [0, 0, 0, 0, 0, 0];
 
-// createChart(scoreDistribution, chartColours);
+createChart(scoreDistribution, chartColours);
 
 // Change colour of guide button when hovered over
 $(".guide-tag").hover(function() {
@@ -84,52 +84,34 @@ $(".scheme-4").hover(function() {
 
 // Bring up instructions if guide is clicked
 $(".guide-tag").click(function() {
-
   gameOn = false;
   $("#instructions").fadeIn(500);
-  $("#heading").animate({opacity: 0.5}, 200);
-  $("#game-board").animate({opacity: 0.5}, 200);
-  $("#keyboard").animate({opacity: 0.5}, 200);
-
+  $("#main-body").animate({opacity: 0.5}, 200);
 });
 
 $(".close-window").click(function() {
-
   gameOn = true;
   $("#instructions").fadeOut(500);
-  $("#heading").animate({opacity: 1}, 500);
-  $("#game-board").animate({opacity: 1}, 500);
-  $("#keyboard").animate({opacity: 1}, 500);
-
+  $("#main-body").animate({opacity: 1}, 200);
 });
 
 // Bring up options page if options is clicked
 $(".options-tag").click(function() {
-
   gameOn = false;
   $("#options-page").fadeIn(500);
-  $("#heading").animate({opacity: 0.5}, 200);
-  $("#game-board").animate({opacity: 0.5}, 200);
-  $("#keyboard").animate({opacity: 0.5}, 200);
-
+  $("#main-body").animate({opacity: 0.5}, 200);
 });
 
 $(".close-window").click(function() {
-
   gameOn = true;
   $("#options-page").fadeOut(500);
-  $("#heading").animate({opacity: 1}, 500);
-  $("#game-board").animate({opacity: 1}, 500);
-  $("#keyboard").animate({opacity: 1}, 500);
-
+  $("#main-body").animate({opacity: 1}, 200);
 });
 
 // Close stats window
 $(".close-stats").click(function() {
   $("#score-chart").fadeOut(500);
-  $("#heading").animate({opacity: 1}, 500);
-  $("#game-board").animate({opacity: 1}, 500);
-  $("#keyboard").animate({opacity: 1}, 500);
+  $("#main-body").animate({opacity: 1}, 200);
 });
 
 
@@ -585,7 +567,8 @@ function gameLost() {
   $(".max-streak").text(maxStreak);
 
   setTimeout(function() {
-    $("#score-chart").fadeIn(1000);
+    $("#score-chart").fadeIn(700);
+    $("#main-body").animate({opacity: 0.5}, 200);
     createChart(scoreDistribution, chartColours);
   }, 3000);
 
@@ -635,10 +618,7 @@ function gameWon() {
 
   setTimeout(function() {
     $("#score-chart").fadeIn(700);
-    $("#feedback").animate({opacity: 0}, 200);
-    $("#heading").animate({opacity: 0.5}, 200);
-    $("#game-board").animate({opacity: 0.5}, 200);
-    $("#keyboard").animate({opacity: 0.5}, 200);
+    $("#main-body").animate({opacity: 0.5}, 200);
   }, 3000);
 
   setTimeout(function() {

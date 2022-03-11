@@ -51,9 +51,9 @@ body {
   top: 11%;
   width: 510px;
   height: 570px;
-  border: 1px solid #4A403A;
   border-radius: 1.5%;
-  background-color: black;
+  background-color: #121213;
+  border: 1px solid #1a1a1b;
   color: white;
   text-align: left;
   font-size: 0.9rem;
@@ -70,9 +70,9 @@ body {
   top: 11%;
   width: 510px;
   height: 570px;
-  border: 1px solid #4A403A;
+  border: 1px solid #1a1a1b;
   border-radius: 1.5%;
-  background-color: black;
+  background-color: #121213;
   color: white;
   text-align: left;
   font-size: 0.9rem;
@@ -89,17 +89,15 @@ body {
   top: 17%;
   width: 510px;
   height: 480px;
-  border: 1px solid #4A403A;
   border-radius: 1.5%;
-  background-color: black;
+  background-color: #121213;
+  border: 1px solid #1a1a1b;
   color: white;
-  font-size: 0.9rem;
-  text-align: center;
 }
 
 .score-heading {
   padding-top: 30px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
   line-height: 2;
   font-family: 'Roboto', sans-serif;
@@ -112,12 +110,16 @@ body {
 }
 
 .game-stats {
-  width: 80%;
+  width: max-content;
   padding: 10px 0 20px;
 }
 
+.col {
+  padding: 0;
+}
+
 .guess-distribution {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
   line-height: 2;
   font-family: 'Roboto', sans-serif;
@@ -134,8 +136,8 @@ body {
 }
 
 .close-window {
-  background-color: black;
-  border-color: black;
+  background-color: #121213;
+  border-color: #121213;
   float: right;
   padding: 0 6px;
 }
