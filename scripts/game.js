@@ -635,7 +635,11 @@ function createChart(scores, colours) {
 // Display game statistics
 function showStats() {
 
-  var winPercentage = Math.round(100 * (scoresList.length / timesPlayed));
+  if (timesPlayed > 0) {
+    var winPercentage = Math.round(100 * (scoresList.length / timesPlayed));
+  } else {
+    var winPercentage = 0;
+  }
 
   $(".games-played").text(timesPlayed);
   $(".win-percent").text(winPercentage);
