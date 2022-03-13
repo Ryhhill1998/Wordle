@@ -228,6 +228,15 @@ $(".scheme").click(function() {
 });
 
 
+// Change game mode to time challenge if user clicks this
+$("#time-challenge").click(function() {
+
+  timeChallengeOn = "true";
+  location.reload();
+
+});
+
+
 // GAME FUNCTIONALITY
 
 // User inputs on keyboard
