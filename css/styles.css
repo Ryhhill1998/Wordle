@@ -2,100 +2,18 @@
 body {
   text-align: center;
   background-color: black;
-}
-
-.guide-tag {
-  font-size: 0.8rem;
-  color: grey;
-  position: absolute;
-  top: 36px;
-  left: 60%;
-  right: 0;
-  margin: 0 auto;
-}
-
-.options-tag {
-  font-size: 0.8rem;
-  color: grey;
-  position: absolute;
-  top: 36px;
-  right: 60%;
-  left: 0;
-  margin: 0 auto;
-}
-
-.hover {
   color: white;
+  font-size: 0.8rem;
+  font-family: 'Roboto', sans-serif;
 }
 
-#navigator {
-  width: 80%;
-  border-bottom: solid 2px grey;
-}
-
-#heading {
-  padding: 10px 0 5px;
+h1 {
+  padding: 5px 0 0;
   font-size: 2.5rem;
-  color: white;
   font-family: 'Graduate', cursive;
 }
 
-#instructions {
-  display: none;
-  padding: 0 12px;
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  top: 11%;
-  width: 510px;
-  height: 570px;
-  border-radius: 1.5%;
-  background-color: #121213;
-  border: 1px solid #1a1a1b;
-  color: white;
-  text-align: left;
-  font-size: 0.9rem;
-}
-
-#options-page {
-  display: none;
-  padding: 0 12px;
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  top: 11%;
-  width: 510px;
-  height: 570px;
-  border: 1px solid #1a1a1b;
-  border-radius: 1.5%;
-  background-color: #121213;
-  color: white;
-  text-align: left;
-  font-size: 0.9rem;
-}
-
-#score-chart {
-  display: none;
-  padding: 0 12px;
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  top: 17%;
-  width: 510px;
-  height: 480px;
-  border-radius: 1.5%;
-  background-color: #121213;
-  border: 1px solid #1a1a1b;
-  color: white;
-}
-
-.score-heading {
+h3 {
   padding-top: 30px;
   font-size: 1.1rem;
   font-weight: bold;
@@ -103,31 +21,83 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+#main-body {
+  padding: 0;
+}
+
+/* popup pages including options, guide and score chart */
+/* General popup style */
+.pop-up {
+  display: none;
+  padding: 2px 12px;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 11%;
+  width: 510px;
+  height: 570px;
+  border-radius: 1.5%;
+  background-color: #121213;
+  border: 1px solid #1a1a1b;
+  text-align: left;
+}
+
+/* Guide and options pages */
+.example {
+  font-family: 'Graduate', cursive;
+  width: 45px;
+  height: 45px;
+  margin: 0 2px 8px;
+  font-size: 1.7rem;
+  border: 2px solid #4A403A;
+}
+
+.card-3-letter-4 {
+  background-color: #4A403A;
+}
+
+.flex-row {
+  position: relative;
+  text-align: center;
+}
+
+/* Options dropdown menu */
+#options-menu {
+  color: grey;
+  background-color: black;
+  border-radius: 0;
+  height: calc(100% - 60px);
+  right: auto;
+  top: 60px;
+  width: 330px;
+  text-align: left;
+}
+
+.dropdown-options {
+  font-size: 1rem;
+  margin: 40px 40px 0;
+}
+
+/* Score chart page */
+#score-chart {
+  top: 17%;
+  height: 480px;
+  text-align: center;
+}
+
 .figure {
   font-size: 2.15rem;
-  margin: 0;
   height: 45px;
 }
 
 .game-stats {
   width: max-content;
-  padding: 10px 0 20px;
 }
 
 .col {
   padding: 0;
-}
-
-.guess-distribution {
-  font-size: 1.1rem;
-  font-weight: bold;
-  line-height: 2;
-  font-family: 'Roboto', sans-serif;
-  padding: 0px 20px 0;
-}
-
-.caption {
-  font-size: 0.8rem;
 }
 
 .chart-area {
@@ -140,51 +110,49 @@ body {
   border-color: #121213;
   float: right;
   padding: 0 6px;
-}
-
-.close-stats {
-  background-color: black;
-  border-color: black;
-  float: right;
-  padding: 0 6px;
   font-family: var(--bs-body-font-family);
 }
 
-.example {
-  font-family: 'Graduate', cursive;
-  width: 45px;
-  height: 45px;
-  margin: 0 2px 8px;
-  font-size: 1.7rem;
-  color: white;
-  border: 2px solid #4A403A;
+
+/* Navigation bar */
+#navigator {
+  height: 60px;
+  margin-bottom: 0;
+  padding: 0;
+  border-bottom: solid 2px grey;
 }
 
-.card-3-letter-4 {
-  background-color: #4A403A;
-  border: 2px solid #4A403A;
+.nav-tag {
+  font-size: 0.8rem;
+  color: grey;
+  position: absolute;
+  width: max-content;
+  top: 30px;
+  right: 50px;
+  padding: 0 10px;
+}
+
+.options-tag {
+  left: 50px;
+}
+
+
+/* Main area including guess board and keyboard */
+/* Guess board including feedback */
+#guess-board {
+  padding: 1% 2% 3%;
+  height: 100%;
 }
 
 #feedback {
   opacity: 0;
   color: black;
   font-size: 1rem;
-  padding: 10px;
-  width: auto;
+  padding: 8px;
   height: 8%;
   border: 2px solid white;
   border-radius: 5%;
   background-color: white;
-}
-
-#guess-board {
-  width: 100%;
-  padding: 1% 2% 2%;
-}
-
-.flex-row {
-  position: relative;
-  text-align: center;
 }
 
 #card {
@@ -193,7 +161,6 @@ body {
   height: 60px;
   margin: 3px;
   font-size: 2.2rem;
-  color: white;
   position: relative;
 }
 
@@ -201,33 +168,26 @@ body {
   border: 2px solid #4A403A;
 }
 
-#keyboard {
-  width: 100%;
-}
-
+/* Keyboard */
 .key {
   width: 45px;
   height: 52px;
-  font-size: 0.85rem;
   background: #7F7C82;
-  color: white;
   margin: 3px;
   border-radius: 8%;
-  padding: 14px 10px 10px;
+  padding: 16px 10px 10px;
 }
 
-.enter {
+.func-key {
   width: 67.5px;
   color: black;
   background-color: #D1D1D1;
 }
 
-.del {
-  width: 67.5px;
-  color: black;
-  background-color: #D1D1D1;
-}
 
+/* In game effects */
+/* Colours */
+/* Letter colour classes */
 .blue-letter {
   color: #008E89;
 }
@@ -256,6 +216,7 @@ body {
   color: #FF5DA2;
 }
 
+/* Main colour classes */
 .green {
   background-color: #4E9F3D;
   border: 2px solid #4E9F3D;
@@ -296,27 +257,41 @@ body {
   border: 2px solid #4A403A;
 }
 
+/* Interactions effects */
 .pressed {
   box-shadow: 0 20px 20px 0 #4A403A;
   opacity: 0.5;
+}
+
+.hover {
+  color: white;
 }
 
 .scheme-hover {
   border: solid 2px white;
 }
 
-.end-game {
+
+/* Game lost effect */
+.game-lost {
   color: red;
 }
 
-.dim-background {
-  opacity: 0.5;
+/* No scroll */
+.no-scroll {
+  overflow: hidden;
 }
+
+
+/* Media queries */
 
 @media (max-width: 576px) {
   .key-row-2 {
     width: 100%;
     padding: 0 5%;
+  }
+  #guess-board {
+    padding-bottom: 10px;
   }
   #instructions {
     width: 90%;
@@ -326,5 +301,8 @@ body {
   }
   #score-chart {
     width: 90%;
+  }
+  #options-menu {
+    width: 100%;
   }
 }
