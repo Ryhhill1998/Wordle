@@ -287,21 +287,9 @@ h3 {
 /* Media queries */
 
 @media (max-width: 576px) {
-  #main-body {
-    height: calc(100% - 60px);
-  }
-  .key {
-    width: 9vw;
-  }
-  .func-key {
-    width: 13.5vw;
-  }
   .key-row-2 {
     width: 100%;
     padding: 0 5%;
-  }
-  #guess-board {
-    padding-bottom: 10px;
   }
   #instructions {
     width: 90vw;
